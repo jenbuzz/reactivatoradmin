@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.scss';
-import Item from './components/Item';
+import Header from './components/Header';
 import Navigation from './components/Navigation';
+import Item from './components/Item';
 
 class App extends Component {
     render() {
@@ -11,13 +12,7 @@ class App extends Component {
                 <div className="container">
                     <div className="columns">
                         <div className="column is-12">
-                            <section className="hero is-info is-small">
-                                <div className="hero-body">
-                                    <div className="container">
-                                        <h1 className="title">reactivatoradmin</h1>
-                                    </div>
-                                </div>
-                            </section>
+                            <Header />
                             <div className="columns">
                                 <div className="column is-12">
                                     <div className="card">
