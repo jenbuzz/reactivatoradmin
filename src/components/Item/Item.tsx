@@ -4,7 +4,7 @@ import './Item.scss';
 class Item extends Component {
     render() {
         return (
-            <div className="item">Item...</div>
+            <div className="item">Item!!!</div>
         );
     }
 }
