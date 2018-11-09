@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
+import Item from './components/Item/Item';
 
 class App extends Component {
     render() {
@@ -38,8 +39,9 @@ class App extends Component {
                                     <div className="card">
                                         <div className="card-table">
                                             <div className="content">
-                                                <div className="item">Item...</div>
-                                                <div className="item">Item...</div>
+                                                <Item />
+                                                <Item />
+                                                <Item />
                                             </div>
                                         </div>
                                     </div>
