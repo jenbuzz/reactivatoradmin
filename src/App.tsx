@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
-import Item from './components/Item/Item';
-import Navigation from './components/Navigation/Navigation';
+import Item from './components/Item';
+import Navigation from './components/Navigation';
 
 class App extends Component {
     render() {
