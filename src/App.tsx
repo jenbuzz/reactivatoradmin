@@ -4,6 +4,24 @@ import Header from './components/Header';
 import Navigation from './components/Navigation';
 import Item from './components/Item';
 
+const dummyData: Object[] = [
+    {
+        name: 'Test 1',
+        isactive: 1,
+        image: 'images/test-image-001.jpg',
+    },
+    {
+        name: 'Test 2',
+        isactive: 0,
+        image: 'images/test-image-002.jpg',
+    }
+    ,{
+        name: 'Test 3',
+        isactive: 1,
+        image: null,
+    }
+];
+
 class App extends Component {
     render() {
         return (
