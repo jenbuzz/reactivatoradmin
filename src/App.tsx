@@ -21,7 +21,7 @@ const dummyData: ItemContent[] = [
         id: 3,
         name: 'Test 3',
         isactive: true,
-        image: null,
+        image: '',
     }
 ];
 
