@@ -2,22 +2,25 @@ import React, { Component } from 'react';
 import './App.scss';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
-import Item from './components/Item';
+import Item, { ItemContent } from './components/Item';
 
-const dummyData: Object[] = [
+const dummyData: ItemContent[] = [
     {
+        id: 1,
         name: 'Test 1',
-        isactive: 1,
+        isactive: true,
         image: 'images/test-image-001.jpg',
     },
     {
+        id: 2,
         name: 'Test 2',
-        isactive: 0,
+        isactive: false,
         image: 'images/test-image-002.jpg',
-    }
-    ,{
+    },
+    {
+        id: 3,
         name: 'Test 3',
-        isactive: 1,
+        isactive: true,
         image: null,
     }
 ];
@@ -36,9 +39,7 @@ class App extends Component {
                                     <div className="card">
                                         <div className="card-table">
                                             <div className="content">
-                                                <Item />
-                                                <Item />
-                                                <Item />
+                                                {dummyData.map(item => <Item key={item.name} item={item} />)}
                                             </div>
                                         </div>
                                     </div>
