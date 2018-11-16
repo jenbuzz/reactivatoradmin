@@ -22,6 +22,14 @@ class Item extends Component<ItemProps, {}> {
         console.log('TODO: change isactive state');
     };
 
+    showPopupInfo = (event: SyntheticEvent) => {
+        console.log('TODO: show popup with info');
+    };
+
+    showPopupDelete = (event: SyntheticEvent) => {
+        console.log('TODO: show popup for delete confirmation');
+    };
+
     render() {
         const item = this.props.item;
 
@@ -35,6 +43,10 @@ class Item extends Component<ItemProps, {}> {
                 </div>
                 <div className="column is-4 has-text-left">
                     <img src={item.image} height="80" />
+                </div>
+                <div className="column is-3 has-text-right item--action-buttons">
+                    <button className="button is-info" onClick={this.showPopupInfo}>Info</button>
+                    <button className="button is-danger" onClick={this.showPopupDelete}>Delete</button>
                 </div>
             </div>
         );

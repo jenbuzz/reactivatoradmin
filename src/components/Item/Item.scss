@@ -7,4 +7,12 @@
         max-height: 80px;
         vertical-align: middle;
     }
+
+    &--action-buttons {
+        padding-right: 1.5rem;
+
+        button:not(:last-of-type) {
+            margin-right: 5px;
+        }
+    }
 }
