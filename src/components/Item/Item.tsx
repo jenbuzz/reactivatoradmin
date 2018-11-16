@@ -13,8 +13,14 @@ interface ItemProps {
 }
 
 class Item extends Component<ItemProps, {}> {
+    state = {
+        item: this.props.item,
+    };
+
     handleIsActiveClick = (event: SyntheticEvent) => {
-        console.log('TODO: change isactive state');
+        this.setState({
+            item: { ...this.state.item, isactive: !this.state.item.isactive }
+        });
     };
 
     showPopupInfo = (event: SyntheticEvent) => {
@@ -26,13 +32,19 @@ class Item extends Component<ItemProps, {}> {
     };
 
     render() {
-        const item = this.props.item;
+        const item = this.state.item;
 
         return (
             <div className="item columns">
                 <div className="column is-4">
                     <div className="field item--isactive">
-                        <input id={'isactive-' + item.id} type="checkbox" name="switchRtlExample" className="switch is-success" checked={item.isactive} onChange={this.handleIsActiveClick} />
+                        <input 
+                            id={'isactive-' + item.id} 
+                            type="checkbox" 
+                            className="switch is-success" 
+                            checked={item.isactive} 
+                            onChange={this.handleIsActiveClick} 
+                        />
                         <label htmlFor={'isactive-' + item.id}>
                             {item.name}
                         </label>
