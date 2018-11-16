@@ -2,6 +2,15 @@
     display: flex;
     align-items: center;
     height: 100px;
+    margin-bottom: 1.75rem !important;
+
+    &:first-child {
+        padding-top: 1.5rem;
+    }
+
+    &:last-child {
+        padding-bottom: 1.5rem;
+    }
 
     img {
         max-height: 80px;
@@ -11,8 +20,18 @@
     &--action-buttons {
         padding-right: 1.5rem;
 
+        @media screen and (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+        }
+
         button:not(:last-of-type) {
             margin-right: 5px;
+
+            @media screen and (max-width: 768px) {
+                margin-right: 0px;
+                margin-bottom: 5px;
+            }
         }
     }
 }
