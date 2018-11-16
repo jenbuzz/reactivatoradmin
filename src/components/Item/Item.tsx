@@ -1,5 +1,4 @@
 import React, { Component, SyntheticEvent } from 'react';
-import PropTypes from 'prop-types';
 import './Item.scss';
 
 export interface ItemContent {
@@ -14,10 +13,6 @@ interface ItemProps {
 }
 
 class Item extends Component<ItemProps, {}> {
-    static propTypes = {
-        item: PropTypes.object,
-    };
-
     handleIsActiveClick = (event: SyntheticEvent) => {
         console.log('TODO: change isactive state');
     };
