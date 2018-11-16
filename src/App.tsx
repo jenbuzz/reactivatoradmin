@@ -26,6 +26,16 @@ const dummyData: ItemContent[] = [
 ];
 
 class App extends Component {
+    state = {
+        items: [],
+    };
+
+    componentDidMount() {
+        this.setState({
+            items: dummyData,
+        });
+    }
+
     render() {
         return (
             <div className="App">
@@ -39,7 +49,9 @@ class App extends Component {
                                     <div className="card">
                                         <div className="card-table">
                                             <div className="content">
-                                                {dummyData.map(item => <Item key={item.name} item={item} />)}
+                                                {this.state.items.map(
+                                                    (item: ItemContent) => <Item key={item.id} item={item} />
+                                                )}
                                             </div>
                                         </div>
                                     </div>
