@@ -35,13 +35,15 @@ class Item extends Component<ItemProps, {}> {
 
         return (
             <div className="item columns">
-                <div className="column is-1">
-                    <input type="checkbox" checked={item.isactive} onChange={this.handleIsActiveClick} />
+                <div className="column is-4">
+                    <div className="field item--isactive">
+                        <input id={'isactive-' + item.id} type="checkbox" name="switchRtlExample" className="switch is-success" checked={item.isactive} onChange={this.handleIsActiveClick} />
+                        <label htmlFor={'isactive-' + item.id}>
+                            {item.name}
+                        </label>
+                    </div>
                 </div>
-                <div className="column is-4 has-text-left">
-                    <span>{item.name}</span>
-                </div>
-                <div className="column is-4 has-text-left">
+                <div className="column is-5 has-text-left">
                     <img src={item.image ? item.image : '/images/default.jpg'} height="80" />
                 </div>
                 <div className="column is-3 has-text-right item--action-buttons">

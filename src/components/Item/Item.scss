@@ -17,6 +17,15 @@
         vertical-align: middle;
     }
 
+    &--isactive {
+        text-align: left;
+        padding-left: 0.75rem;
+
+        label {
+            padding-top: 0.1rem !important;
+        }
+    }
+
     &--action-buttons {
         padding-right: 1.5rem;
 
