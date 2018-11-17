@@ -39,10 +39,10 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Navigation />
                 <div className="container">
                     <div className="columns">
                         <div className="column is-12">
+                            <Navigation />
                             <Header />
                             <div className="columns">
                                 <div className="column is-12">
