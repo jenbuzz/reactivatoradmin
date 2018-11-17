@@ -1,4 +1,5 @@
 import React from 'react';
+import './Header.scss';
 
 const Header = (props: any) => (
     <section className="hero is-info is-small">
