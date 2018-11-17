@@ -2,11 +2,9 @@ import React from 'react';
 import './Header.scss';
 
 const Header = (props: any) => (
-    <section className="hero is-info is-small">
+    <section className="hero is-info">
         <div className="hero-body">
-            <div className="container">
-                <h1 className="title">reactivatoradmin</h1>
-            </div>
+            <h1 className="title">reactivatoradmin</h1>
         </div>
     </section>
 );
