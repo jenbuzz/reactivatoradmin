@@ -22,8 +22,6 @@ class Item extends Component<ItemProps, {}> {
     };
 
     toggleIsActive = (event: SyntheticEvent) => {
-        event.preventDefault();
-
         this.setState((state: any) => ({
             item: {
                 ...state.item,
