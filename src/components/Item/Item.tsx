@@ -66,7 +66,7 @@ class Item extends Component<ItemProps, {}> {
                     </div>
                 </div>
                 <div className="column is-5 has-text-left">
-                    <img src={item.image ? item.image : '/images/default.jpg'} height="80" />
+                    <img src={item.image ? item.image : '/images/default.jpg'} height="80" alt={item.name} />
                 </div>
                 <div className="column is-3 has-text-right item--action-buttons">
                     <button className="button is-info" onClick={this.toggleInfoModal}>Info</button>
