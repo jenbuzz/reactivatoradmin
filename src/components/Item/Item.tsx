@@ -1,5 +1,6 @@
 import React, { Component, SyntheticEvent } from 'react';
 import InfoModal from './../InfoModal';
+import DeleteModal from './../DeleteModal';
 import './Item.scss';
 
 export interface ItemContent {
@@ -17,6 +18,7 @@ class Item extends Component<ItemProps, {}> {
     state = {
         item: this.props.item,
         isInfoModalVisible: false,
+        isDeleteModalVisible: false,
     };
 
     toggleIsActive = (event: SyntheticEvent) => {
@@ -38,8 +40,12 @@ class Item extends Component<ItemProps, {}> {
         }));
     };
 
-    showPopupDelete = (event: SyntheticEvent) => {
-        console.log('TODO: show popup for delete confirmation');
+    toggleDeleteModal = (event: SyntheticEvent) => {
+        event.preventDefault();
+
+        this.setState((state: any) => ({
+            isDeleteModalVisible: !state.isDeleteModalVisible,
+        }));
     };
 
     render() {
@@ -66,9 +72,10 @@ class Item extends Component<ItemProps, {}> {
                 </div>
                 <div className="column is-3 has-text-right item--action-buttons">
                     <button className="button is-info" onClick={this.toggleInfoModal}>Info</button>
-                    <button className="button is-danger" onClick={this.showPopupDelete}>Delete</button>
+                    <button className="button is-danger" onClick={this.toggleDeleteModal}>Delete</button>
                 </div>
                 <InfoModal item={item} isVisible={this.state.isInfoModalVisible} toggleVisibility={this.toggleInfoModal} />
+                <DeleteModal item={item} isVisible={this.state.isDeleteModalVisible} toggleVisibility={this.toggleDeleteModal} />
             </div>
         );
     }
