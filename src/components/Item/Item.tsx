@@ -10,7 +10,7 @@ export interface ItemContent {
 }
 
 interface ItemProps {
-  item: ItemContent;
+    item: ItemContent;
 }
 
 class Item extends Component<ItemProps, {}> {
@@ -19,16 +19,23 @@ class Item extends Component<ItemProps, {}> {
         isInfoModalVisible: false,
     };
 
-    handleIsActiveClick = (event: SyntheticEvent) => {
-        this.setState({
-            item: { ...this.state.item, isactive: !this.state.item.isactive }
-        });
+    toggleIsActive = (event: SyntheticEvent) => {
+        event.preventDefault();
+
+        this.setState((state: any) => ({
+            item: {
+                ...state.item,
+                isactive: !state.item.isactive,
+            }
+        }));
     };
 
     toggleInfoModal = (event: SyntheticEvent) => {
-        this.setState({
-            isInfoModalVisible: !this.state.isInfoModalVisible,
-        });
+        event.preventDefault();
+
+        this.setState((state: any) => ({
+            isInfoModalVisible: !state.isInfoModalVisible,
+        }));
     };
 
     showPopupDelete = (event: SyntheticEvent) => {
@@ -47,7 +54,7 @@ class Item extends Component<ItemProps, {}> {
                             type="checkbox" 
                             className="switch is-success" 
                             checked={item.isactive} 
-                            onChange={this.handleIsActiveClick} 
+                            onChange={this.toggleIsActive} 
                         />
                         <label htmlFor={'isactive-' + item.id}>
                             {item.name}

@@ -9,7 +9,7 @@ interface InfoModalProps {
 
 class InfoModal extends Component<InfoModalProps, {}> {
     render() {
-        const { item, isVisible } = this.props;
+        const { item, isVisible, toggleVisibility } = this.props;
 
         return (
             <div className={'modal' + (isVisible ? ' is-active' : '')}>
@@ -38,7 +38,7 @@ class InfoModal extends Component<InfoModalProps, {}> {
                         </table>
                     </div>
                 </div>
-                <button className="modal-close is-large" aria-label="close" onClick={this.props.toggleVisibility}></button>
+                <button className="modal-close is-large" aria-label="close" onClick={toggleVisibility}></button>
             </div>
         );
     }
