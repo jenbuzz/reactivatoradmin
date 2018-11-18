@@ -1,4 +1,5 @@
 import React, { Component, SyntheticEvent } from 'react';
+import InfoModal from './../InfoModal';
 import './Item.scss';
 
 export interface ItemContent {
@@ -15,6 +16,7 @@ interface ItemProps {
 class Item extends Component<ItemProps, {}> {
     state = {
         item: this.props.item,
+        isInfoModalVisible: false,
     };
 
     handleIsActiveClick = (event: SyntheticEvent) => {
@@ -23,8 +25,10 @@ class Item extends Component<ItemProps, {}> {
         });
     };
 
-    showPopupInfo = (event: SyntheticEvent) => {
-        console.log('TODO: show popup with info');
+    toggleInfoModal = (event: SyntheticEvent) => {
+        this.setState({
+            isInfoModalVisible: !this.state.isInfoModalVisible,
+        });
     };
 
     showPopupDelete = (event: SyntheticEvent) => {
@@ -54,9 +58,10 @@ class Item extends Component<ItemProps, {}> {
                     <img src={item.image ? item.image : '/images/default.jpg'} height="80" />
                 </div>
                 <div className="column is-3 has-text-right item--action-buttons">
-                    <button className="button is-info" onClick={this.showPopupInfo}>Info</button>
+                    <button className="button is-info" onClick={this.toggleInfoModal}>Info</button>
                     <button className="button is-danger" onClick={this.showPopupDelete}>Delete</button>
                 </div>
+                <InfoModal item={item} isVisible={this.state.isInfoModalVisible} toggleVisibility={this.toggleInfoModal} />
             </div>
         );
     }
