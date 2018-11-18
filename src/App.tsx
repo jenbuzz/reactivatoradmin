@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.scss';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import Item, { ItemContent } from './components/Item';
 import Pagination from './components/Pagination';
+import './App.scss';
 
 const dummyData: ItemContent[] = [
     {

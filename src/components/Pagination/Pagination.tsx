@@ -7,13 +7,27 @@ class Pagination extends Component {
                 <button className="button pagination-previous">Previous</button>
                 <button className="button pagination-next">Next page</button>
                 <ul className="pagination-list">
-                    <li><button className="button pagination-link" aria-label="Goto page 1">1</button></li>
-                    <li><span className="pagination-ellipsis">&hellip;</span></li>
-                    <li><button className="button pagination-link" aria-label="Goto page 45">45</button></li>
-                    <li><button className="button pagination-link is-current" aria-label="Page 46" aria-current="page">46</button></li>
-                    <li><button className="button pagination-link" aria-label="Goto page 47">47</button></li>
-                    <li><span className="pagination-ellipsis">&hellip;</span></li>
-                    <li><button className="button pagination-link" aria-label="Goto page 86">86</button></li>
+                    <li>
+                        <button className="button pagination-link" aria-label="Goto page 1">1</button>
+                    </li>
+                    <li>
+                        <span className="pagination-ellipsis">&hellip;</span>
+                    </li>
+                    <li>
+                        <button className="button pagination-link" aria-label="Goto page 45">45</button>
+                    </li>
+                    <li>
+                        <button className="button pagination-link is-current" aria-label="Page 46" aria-current="page">46</button>
+                    </li>
+                    <li>
+                        <button className="button pagination-link" aria-label="Goto page 47">47</button>
+                    </li>
+                    <li>
+                        <span className="pagination-ellipsis">&hellip;</span>
+                    </li>
+                    <li>
+                        <button className="button pagination-link" aria-label="Goto page 86">86</button>
+                    </li>
                 </ul>
             </nav>
         );
