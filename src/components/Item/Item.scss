@@ -12,9 +12,12 @@
         padding-bottom: 1.5rem;
     }
 
-    img {
-        max-height: 80px;
-        vertical-align: middle;
+    &--image {
+        img {
+            max-height: 80px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
     }
 
     &--isactive {
