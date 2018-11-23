@@ -14,7 +14,13 @@ interface ItemProps {
     item: ItemContent;
 }
 
-class Item extends Component<ItemProps, {}> {
+interface ItemState {
+    item: ItemContent;
+    isInfoModalVisible: boolean;
+    isDeleteModalVisible: boolean;
+}
+
+class Item extends Component<ItemProps, ItemState> {
     state = {
         item: this.props.item,
         isInfoModalVisible: false,
@@ -22,7 +28,7 @@ class Item extends Component<ItemProps, {}> {
     };
 
     toggleIsActive = (event: SyntheticEvent) => {
-        this.setState((state: any) => ({
+        this.setState((state: ItemState) => ({
             item: {
                 ...state.item,
                 isactive: !state.item.isactive,
@@ -33,7 +39,7 @@ class Item extends Component<ItemProps, {}> {
     toggleInfoModal = (event: SyntheticEvent) => {
         event.preventDefault();
 
-        this.setState((state: any) => ({
+        this.setState((state: ItemState) => ({
             isInfoModalVisible: !state.isInfoModalVisible,
         }));
     };
@@ -41,13 +47,13 @@ class Item extends Component<ItemProps, {}> {
     toggleDeleteModal = (event: SyntheticEvent) => {
         event.preventDefault();
 
-        this.setState((state: any) => ({
+        this.setState((state: ItemState) => ({
             isDeleteModalVisible: !state.isDeleteModalVisible,
         }));
     };
 
     render() {
-        const item = this.state.item;
+        const { item, isInfoModalVisible, isDeleteModalVisible } = this.state;
 
         return (
             <div className="item columns">
@@ -72,8 +78,8 @@ class Item extends Component<ItemProps, {}> {
                     <button className="button is-info" onClick={this.toggleInfoModal}>Info</button>
                     <button className="button is-danger" onClick={this.toggleDeleteModal}>Delete</button>
                 </div>
-                <InfoModal item={item} isVisible={this.state.isInfoModalVisible} toggleVisibility={this.toggleInfoModal} />
-                <DeleteModal item={item} isVisible={this.state.isDeleteModalVisible} toggleVisibility={this.toggleDeleteModal} />
+                <InfoModal item={item} isVisible={isInfoModalVisible} toggleVisibility={this.toggleInfoModal} />
+                <DeleteModal item={item} isVisible={isDeleteModalVisible} toggleVisibility={this.toggleDeleteModal} />
             </div>
         );
     }
