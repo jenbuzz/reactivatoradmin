@@ -7,7 +7,7 @@ interface ImageModalProps {
     toggleVisibility: any;
 }
 
-class InfoModal extends Component<ImageModalProps, {}> {
+class ImageModal extends Component<ImageModalProps, {}> {
     render() {
         const { item, isVisible, toggleVisibility } = this.props;
 
@@ -23,4 +23,4 @@ class InfoModal extends Component<ImageModalProps, {}> {
     }
 }
 
-export default InfoModal;
+export default ImageModal;
