@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase/app';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import Item, { ItemContent } from './components/Item';
@@ -32,6 +33,14 @@ class App extends Component {
     };
 
     componentDidMount() {
+        var config = {
+            apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+            authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+            databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+            storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+        };
+        firebase.initializeApp(config);
+
         this.setState({
             items: dummyData,
         });
