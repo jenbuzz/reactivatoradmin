@@ -1,0 +1,24 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-standard",
+    "tslint-react"
+  ],
+  "rulesDirectory": [],
+  "rules": {
+    "indent": [
+      true,
+      "spaces",
+      4
+    ],
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "semicolon": [
+      true,
+      "always"
+    ]
+  }
+}
