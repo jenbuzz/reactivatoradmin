@@ -6,27 +6,6 @@ import Pagination from './components/Pagination';
 import base from './base';
 import './App.scss';
 
-const dummyData: ItemContent[] = [
-    {
-        id: 1,
-        name: 'Test 1',
-        isactive: true,
-        image: 'images/test-image-001.jpg',
-    },
-    {
-        id: 2,
-        name: 'Test 2',
-        isactive: false,
-        image: 'images/test-image-002.jpg',
-    },
-    {
-        id: 3,
-        name: 'Test 3',
-        isactive: true,
-        image: '',
-    }
-];
-
 class App extends Component {
     state = {
         items: [],

@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { ItemContent } from './../Item';
 
-interface ImageModalProps {
+interface IImageModalProps {
     item: ItemContent;
     isVisible: boolean;
     toggleVisibility: any;
 }
 
-class ImageModal extends Component<ImageModalProps, {}> {
+class ImageModal extends Component<IImageModalProps> {
     render() {
         const { item, isVisible, toggleVisibility } = this.props;
 
         return (
             <div className={'modal' + (isVisible ? ' is-active' : '')}>
-                <div className="modal-background"></div>
+                <div className="modal-background" />
                 <div className="modal-content">
                     <img src={item.image} />
                 </div>
-                <button className="modal-close is-large" aria-label="close" onClick={toggleVisibility}></button>
+                <button className="modal-close is-large" aria-label="close" onClick={toggleVisibility} />
             </div>
         );
     }

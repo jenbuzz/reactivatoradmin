@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { ItemContent } from './../Item';
 
-interface InfoModalProps {
+interface IInfoModalProps {
     item: ItemContent;
     isVisible: boolean;
     toggleVisibility: any;
 }
 
-class InfoModal extends Component<InfoModalProps, {}> {
+class InfoModal extends Component<IInfoModalProps> {
     render() {
         const { item, isVisible, toggleVisibility } = this.props;
 
         return (
             <div className={'modal' + (isVisible ? ' is-active' : '')}>
-                <div className="modal-background"></div>
+                <div className="modal-background" />
                 <div className="modal-content">
                     <div className="box">
                         <table>
@@ -38,7 +38,7 @@ class InfoModal extends Component<InfoModalProps, {}> {
                         </table>
                     </div>
                 </div>
-                <button className="modal-close is-large" aria-label="close" onClick={toggleVisibility}></button>
+                <button className="modal-close is-large" aria-label="close" onClick={toggleVisibility} />
             </div>
         );
     }

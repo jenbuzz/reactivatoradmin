@@ -35,7 +35,7 @@ class Item extends Component<ItemProps, ItemState> {
             item: {
                 ...state.item,
                 isactive: !state.item.isactive,
-            }
+            },
         }));
     };
 
@@ -72,12 +72,12 @@ class Item extends Component<ItemProps, ItemState> {
             <div className="item columns">
                 <div className="column is-4">
                     <div className="field item--isactive">
-                        <input 
-                            id={'isactive-' + item.id} 
-                            type="checkbox" 
-                            className="switch is-success" 
-                            checked={item.isactive} 
-                            onChange={this.toggleIsActive} 
+                        <input
+                            id={'isactive-' + item.id}
+                            type="checkbox"
+                            className="switch is-success"
+                            checked={item.isactive}
+                            onChange={this.toggleIsActive}
                         />
                         <label htmlFor={'isactive-' + item.id}>
                             {item.name}
@@ -85,7 +85,12 @@ class Item extends Component<ItemProps, ItemState> {
                     </div>
                 </div>
                 <div className="column is-5 has-text-left item--image">
-                    <img src={item.image ? item.image : '/images/default.jpg'} height="80" alt={item.name} onClick={this.toggleImageModal} />
+                    <img
+                        src={item.image ? item.image : '/images/default.jpg'}
+                        height="80"
+                        alt={item.name}
+                        onClick={this.toggleImageModal}
+                    />
                 </div>
                 <div className="column is-3 has-text-right item--action-buttons">
                     <button className="button is-info" onClick={this.toggleInfoModal}>Info</button>
