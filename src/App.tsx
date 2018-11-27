@@ -15,7 +15,12 @@ class App extends Component {
         base.bindCollection('items', {
             context: this,
             state: 'items',
+            withIds: true,
         });
+    }
+
+    updateItem = (item: ItemContent) => {
+        base.updateDoc(`items/${item.id}`, item);
     }
 
     render() {
@@ -31,8 +36,14 @@ class App extends Component {
                                     <div className="card">
                                         <div className="card-table">
                                             <div className="content">
-                                                {this.state.items.map(
-                                                    (item: ItemContent) => <Item key={item.id} item={item} />
+                                                {Object.keys(this.state.items).map(
+                                                    (key: any) => (
+                                                        <Item 
+                                                            key={key} 
+                                                            item={this.state.items[key]}
+                                                            updateItem={this.updateItem}
+                                                        />
+                                                    )
                                                 )}
                                             </div>
                                         </div>

@@ -2,6 +2,7 @@ import React, { Component, SyntheticEvent } from 'react';
 import InfoModal from './../InfoModal';
 import DeleteModal from './../DeleteModal';
 import ImageModal from './../ImageModal';
+import base from './../../base';
 import './Item.scss';
 
 export interface ItemContent {
@@ -13,10 +14,10 @@ export interface ItemContent {
 
 interface ItemProps {
     item: ItemContent;
+    updateItem: Function;
 }
 
 interface ItemState {
-    item: ItemContent;
     isInfoModalVisible: boolean;
     isDeleteModalVisible: boolean;
     isImageModalVisible: boolean;
@@ -24,19 +25,18 @@ interface ItemState {
 
 class Item extends Component<ItemProps, ItemState> {
     state = {
-        item: this.props.item,
         isInfoModalVisible: false,
         isDeleteModalVisible: false,
         isImageModalVisible: false,
     };
 
     toggleIsActive = (event: SyntheticEvent) => {
-        this.setState((state: ItemState) => ({
-            item: {
-                ...state.item,
-                isactive: !state.item.isactive,
-            },
-        }));
+        const updatedItem = {
+            ...this.props.item,
+            isactive: !this.props.item.isactive,
+        };
+
+        this.props.updateItem(updatedItem);
     };
 
     toggleInfoModal = (event: SyntheticEvent) => {
@@ -58,7 +58,7 @@ class Item extends Component<ItemProps, ItemState> {
     toggleImageModal = (event: SyntheticEvent) => {
         event.preventDefault();
 
-        if (this.state.item.image) {
+        if (this.props.item.image) {
             this.setState((state: ItemState) => ({
                 isImageModalVisible: !state.isImageModalVisible,
             }));
@@ -66,7 +66,8 @@ class Item extends Component<ItemProps, ItemState> {
     };
 
     render() {
-        const { item, isInfoModalVisible, isDeleteModalVisible, isImageModalVisible } = this.state;
+        const { isInfoModalVisible, isDeleteModalVisible, isImageModalVisible } = this.state;
+        const { item } = this.props;
 
         return (
             <div className="item columns">
