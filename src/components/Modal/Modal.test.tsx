@@ -10,6 +10,7 @@ it('renders without crashing', () => {
             item={{id: 1, name: 'Lorem ipsum', isactive: true, image: ''}}
             isVisible={false}
             toggleVisibility={toggleVisibility}
+            children={() => <div>test</div>}
         />,
         div
     );
