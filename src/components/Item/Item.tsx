@@ -2,6 +2,7 @@ import React, { Component, SyntheticEvent } from 'react';
 import InfoModal from './../InfoModal';
 import DeleteModal from './../DeleteModal';
 import ImageModal from './../ImageModal';
+import Modal from './../Modal';
 import base from './../../base';
 import './Item.scss';
 
@@ -99,7 +100,11 @@ class Item extends Component<ItemProps, ItemState> {
                 </div>
                 <InfoModal item={item} isVisible={isInfoModalVisible} toggleVisibility={this.toggleInfoModal} />
                 <DeleteModal item={item} isVisible={isDeleteModalVisible} toggleVisibility={this.toggleDeleteModal} />
-                <ImageModal item={item} isVisible={isImageModalVisible} toggleVisibility={this.toggleImageModal} />
+                <Modal item={item} isVisible={isImageModalVisible} toggleVisibility={this.toggleImageModal}>
+                    {(item: ItemContent) => (
+                        <img src={item.image} />
+                    )}
+                </Modal>
             </div>
         );
     }
