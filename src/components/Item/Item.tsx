@@ -124,7 +124,9 @@ class Item extends Component<ItemProps, ItemState> {
                 </Modal>
                 <Modal item={item} isVisible={isImageModalVisible} toggleVisibility={this.toggleImageModal}>
                     {(item: ItemContent) => (
-                        <img src={item.image} />
+                        <div className="has-text-centered">
+                            <img src={item.image} />
+                        </div>
                     )}
                 </Modal>
             </div>
