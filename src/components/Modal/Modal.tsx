@@ -6,7 +6,7 @@ interface IModalProps {
     item: ItemContent;
     isVisible: boolean;
     toggleVisibility: any;
-    children: (item: ItemContent) => ReactNode;
+    children: (item: ItemContent, toggleVisibility: any) => ReactNode;
 }
 
 class Modal extends Component<IModalProps> {
@@ -34,7 +34,7 @@ class Modal extends Component<IModalProps> {
             <div className={'modal' + (isVisible ? ' is-active' : '')}>
                 <div className="modal-background" />
                 <div className="modal-content">
-                    {children ? children(item) : ''}
+                    {children ? children(item, toggleVisibility) : ''}
                 </div>
                 <button className="modal-close is-large" aria-label="close" onClick={toggleVisibility} />
             </div>,

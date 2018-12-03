@@ -1,5 +1,4 @@
 import React, { Component, SyntheticEvent } from 'react';
-import DeleteModal from './../DeleteModal';
 import Modal from './../Modal';
 import './Item.scss';
 
@@ -95,7 +94,15 @@ class Item extends Component<ItemProps, ItemState> {
                     <button className="button is-info" onClick={this.toggleInfoModal}>Info</button>
                     <button className="button is-danger" onClick={this.toggleDeleteModal}>Delete</button>
                 </div>
-                <DeleteModal item={item} isVisible={isDeleteModalVisible} toggleVisibility={this.toggleDeleteModal} />
+                <Modal item={item} isVisible={isDeleteModalVisible} toggleVisibility={this.toggleDeleteModal}>
+                    {(item: ItemContent, toggleVisibility: any) => (
+                        <div className="box">
+                            <p>Are you sure you want to delete <strong>{item.name}</strong>?</p>
+                            <button className="button is-primary" onClick={toggleVisibility}>Cancel</button>
+                            <button className="button is-danger">Delete</button>
+                        </div>
+                    )}
+                </Modal>
                 <Modal item={item} isVisible={isInfoModalVisible} toggleVisibility={this.toggleInfoModal}>
                     {(item: ItemContent) => (
                         <div className="box">
