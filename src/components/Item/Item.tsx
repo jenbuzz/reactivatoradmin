@@ -1,9 +1,6 @@
 import React, { Component, SyntheticEvent } from 'react';
-import InfoModal from './../InfoModal';
 import DeleteModal from './../DeleteModal';
-import ImageModal from './../ImageModal';
 import Modal from './../Modal';
-import base from './../../base';
 import './Item.scss';
 
 export interface ItemContent {
