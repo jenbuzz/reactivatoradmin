@@ -98,8 +98,33 @@ class Item extends Component<ItemProps, ItemState> {
                     <button className="button is-info" onClick={this.toggleInfoModal}>Info</button>
                     <button className="button is-danger" onClick={this.toggleDeleteModal}>Delete</button>
                 </div>
-                <InfoModal item={item} isVisible={isInfoModalVisible} toggleVisibility={this.toggleInfoModal} />
                 <DeleteModal item={item} isVisible={isDeleteModalVisible} toggleVisibility={this.toggleDeleteModal} />
+                <Modal item={item} isVisible={isInfoModalVisible} toggleVisibility={this.toggleInfoModal}>
+                    {(item: ItemContent) => (
+                        <div className="box">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>ID</strong></td>
+                                        <td>{item.id}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Name</strong></td>
+                                        <td>{item.name}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Is active?</strong></td>
+                                        <td>{item.isactive}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Image</strong></td>
+                                        <td>{item.image}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+                </Modal>
                 <Modal item={item} isVisible={isImageModalVisible} toggleVisibility={this.toggleImageModal}>
                     {(item: ItemContent) => (
                         <img src={item.image} />
