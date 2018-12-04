@@ -11,7 +11,7 @@ export interface ItemContent {
 
 interface ItemProps {
     item: ItemContent;
-    updateItem: Function;
+    updateItem: (item: ItemContent) => void;
 }
 
 interface ItemState {

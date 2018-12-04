@@ -38,8 +38,8 @@ class App extends Component {
                                             <div className="content">
                                                 {Object.keys(this.state.items).map(
                                                     (key: any) => (
-                                                        <Item 
-                                                            key={key} 
+                                                        <Item
+                                                            key={key}
                                                             item={this.state.items[key]}
                                                             updateItem={this.updateItem}
                                                         />
