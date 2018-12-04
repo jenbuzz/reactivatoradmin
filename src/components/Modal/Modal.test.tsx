@@ -8,7 +8,12 @@ it('renders without crashing', () => {
     const children = () => <div>test</div>;
     ReactDOM.render(
         <Modal
-            item={{id: 1, name: 'Lorem ipsum', isactive: true, image: ''}}
+            item={{
+                id: 1,
+                name: 'Lorem ipsum',
+                isactive: true,
+                image: '',
+            }}
             isVisible={false}
             toggleVisibility={toggleVisibility}
             children={children}

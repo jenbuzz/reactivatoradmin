@@ -6,9 +6,9 @@ class Navigation extends Component {
             <nav className="navbar is-white">
                 <div className="navbar-brand">
                     <div className="navbar-burger burger" data-target="navMenu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span />
+                        <span />
+                        <span />
                     </div>
                 </div>
                 <div id="navMenu" className="navbar-menu">
