@@ -7,12 +7,17 @@
   ],
   "rulesDirectory": [],
   "rules": {
-    "ordered-imports": false,
-    "object-literal-sort-keys": false,
     "indent": [true, "spaces", 4],
-    "ter-indent": [true, 4, {"SwitchCase": 1}],
+    "jsx-curly-spacing": [true, "never"],
+    "jsx-no-multiline-js": false,
+    "member-access": false,
+    "no-shadowed-variable": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
     "quotemark": [true, "single", "jsx-double"],
     "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "space-before-function-paren": [true, "never"],
+    "ter-indent": [true, 4, {"SwitchCase": 1}],
     "trailing-comma": [true, {
       "multiline": {
         "arrays": "always",
@@ -23,10 +28,6 @@
         "exports": "never"
       }
     }],
-    "member-access": false,
-    "whitespace": [true, "check-module", "check-operator", "check-typecast"],
-    "jsx-no-multiline-js": false,
-    "space-before-function-paren": [true, "never"],
-    "jsx-curly-spacing": [true, "never"]
+    "whitespace": [true, "check-module", "check-operator", "check-typecast"]
   }
 }
