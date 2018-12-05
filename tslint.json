@@ -11,6 +11,7 @@
     "jsx-curly-spacing": [true, "never"],
     "jsx-no-multiline-js": false,
     "member-access": false,
+    "no-console": false,
     "no-shadowed-variable": false,
     "object-literal-sort-keys": false,
     "ordered-imports": false,

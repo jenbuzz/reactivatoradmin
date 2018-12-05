@@ -8,7 +8,7 @@
     "build": "react-scripts build",
     "test": "CI=true react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "tslint 'src/**/*.{ts,tsx}'"
+    "lint": "tslint -p tsconfig.json 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
     "@types/jest": "^23.3.9",
