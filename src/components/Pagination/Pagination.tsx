@@ -17,7 +17,13 @@ class Pagination extends Component {
                         <button className="button pagination-link" aria-label="Goto page 45">45</button>
                     </li>
                     <li>
-                        <button className="button pagination-link is-current" aria-label="Page 46" aria-current="page">46</button>
+                        <button
+                            className="button pagination-link is-current"
+                            aria-label="Page 46"
+                            aria-current="page"
+                        >
+                            <span>46</span>
+                        </button>
                     </li>
                     <li>
                         <button className="button pagination-link" aria-label="Goto page 47">47</button>

@@ -20,7 +20,9 @@ class App extends Component {
     }
 
     updateItem = (item: ItemContent) => {
-        base.updateDoc(`items/${item.id}`, item);
+        base.updateDoc(`items/${item.id}`, item)
+            .then(() => console.log('updated doc'))
+            .catch((error: any) => console.log(error));
     }
 
     render() {
