@@ -6,7 +6,11 @@ import Pagination from './components/Pagination';
 import base from './base';
 import './App.scss';
 
-class App extends Component {
+interface IAppState {
+    items: ItemContent[];
+}
+
+class App extends Component<{}, IAppState> {
     state = {
         items: [],
     };

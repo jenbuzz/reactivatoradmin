@@ -1,11 +1,11 @@
-import React, { Component, ReactNode } from 'react';
+import React, { Component, ReactNode, SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { ItemContent } from './../Item';
 
 interface IModalProps {
     item: ItemContent;
     isVisible: boolean;
-    toggleVisibility: any;
+    toggleVisibility: (event: SyntheticEvent) => void;
     children: (item: ItemContent, toggleVisibility: any) => ReactNode;
 }
 
