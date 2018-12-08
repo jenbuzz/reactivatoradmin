@@ -58,7 +58,7 @@ class App extends Component<{}, IAppState> {
                                     </div>
                                 </div>
                             </div>
-                            <Pagination items={this.state.items} />
+                            <Pagination items={this.state.items} limit={2} page={0} />
                         </div>
                     </div>
                 </div>

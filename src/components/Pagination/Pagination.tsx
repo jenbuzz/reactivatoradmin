@@ -3,22 +3,29 @@ import { ItemContent } from '../Item';
 
 interface PaginationProps {
     items: ItemContent[];
+    page: number;
+    limit: number;
 }
 
 class Pagination extends Component<PaginationProps, {}> {
     render() {
-        const { items } = this.props;
+        const { items, limit, page } = this.props;
         const count = items ? items.length : 0;
 
         if (count === 0) {
             return null;
         }
 
+        const totalPages = Math.ceil(count / limit);
+        const hasPrevPages = page > 0;
+        const hasNextPages = page < totalPages;
+
         return (
             <nav className="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
-                <button className="button pagination-previous">Previous</button>
-                <button className="button pagination-next">Next page</button>
-                <ul className="pagination-list">
+                <button className="button pagination-previous" disabled={!hasPrevPages}>Previous</button>
+                <button className="button pagination-next" disabled={!hasNextPages}>Next page</button>
+                
+                {/*<ul className="pagination-list">
                     <li>
                         <button className="button pagination-link" aria-label="Goto page 1">1</button>
                     </li>
@@ -46,7 +53,7 @@ class Pagination extends Component<PaginationProps, {}> {
                     <li>
                         <button className="button pagination-link" aria-label="Goto page 86">86</button>
                     </li>
-                </ul>
+                </ul>*/}
             </nav>
         );
     }
