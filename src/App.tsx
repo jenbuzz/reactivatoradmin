@@ -24,7 +24,9 @@ class App extends Component<{}, IAppState> {
     }
 
     updateItem = (item: ItemContent) => {
-        base.updateDoc(`items/${item.id}`, item)
+        const {id, ...baseItem} = item;
+
+        base.updateDoc(`items/${id}`, baseItem)
             .then(() => console.log('updated doc'))
             .catch((error: any) => console.log(error));
     }
