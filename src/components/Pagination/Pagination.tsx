@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
+import { ItemContent } from '../Item';
 
-class Pagination extends Component {
+interface PaginationProps {
+    items: ItemContent[];
+}
+
+class Pagination extends Component<PaginationProps, {}> {
     render() {
+        const { items } = this.props;
+        const count = items ? items.length : 0;
+
+        if (count === 0) {
+            return null;
+        }
+
         return (
             <nav className="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
                 <button className="button pagination-previous">Previous</button>
