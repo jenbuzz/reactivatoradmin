@@ -9,16 +9,14 @@ import './App.scss';
 interface IAppState {
     items: ItemContent[];
     total: number;
-    page: number;
 }
 
 class App extends Component<{}, IAppState> {
-    LIMIT = 2;
+    LIMIT = 3;
 
     state = {
         items: [],
         total: 0,
-        page: 0,
     };
 
     componentDidMount() {
@@ -36,24 +34,13 @@ class App extends Component<{}, IAppState> {
         this.bindCollection();
     }
 
-    bindCollection(type?: string) {
-        const key = this.state.items.length - 1;
-        const offset = this.state.items.length ? this.state.items[key]['name'] : null;
-
+    bindCollection() {
         base.bindCollection('items', {
             context: this,
             state: 'items',
             withIds: true,
-            query: (ref: any) => {
-                if (offset) {
-                    if (type === 'dec') {
-                        return ref.orderBy('name', 'asc').endAt(offset).limit(this.LIMIT);
-                    }
-
-                    return ref.orderBy('name', 'asc').startAfter(offset).limit(this.LIMIT);
-                }
-                    
-                return ref.orderBy('name', 'asc').limit(this.LIMIT);                
+            query: (ref: any) => {                    
+                return ref.orderBy('name', 'asc').limit(this.state.items.length + this.LIMIT);
             }
         });
     }
@@ -66,13 +53,9 @@ class App extends Component<{}, IAppState> {
             .catch((error: any) => console.log(error));
     }
 
-    setPage = (page: number, type: 'inc'|'dec') => {
-        this.setState({
-            page,
-        }, () => {
-            base.reset();
-            this.bindCollection(type);
-        });
+    loadMore = () => {
+        base.reset();
+        this.bindCollection();
     }
 
     render() {
@@ -102,7 +85,7 @@ class App extends Component<{}, IAppState> {
                                     </div>
                                 </div>
                             </div>
-                            <Pagination total={this.state.total} limit={this.LIMIT} page={this.state.page} setPage={this.setPage} />
+                            <Pagination hasLoadedAll={this.state.items.length === this.state.total} loadMore={this.loadMore} />
                         </div>
                     </div>
                 </div>
