@@ -4,7 +4,7 @@ interface PaginationProps {
     total: number;
     page: number;
     limit: number;
-    setPage: (page: number) => void;
+    setPage: (page: number, type: 'inc'|'dec') => void;
 }
 
 class Pagination extends Component<PaginationProps, {}> {
@@ -21,8 +21,8 @@ class Pagination extends Component<PaginationProps, {}> {
 
         return (
             <nav className="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
-                <button className="button pagination-previous" disabled={!hasPrevPages} onClick={() => setPage(page-1)}>Previous</button>
-                <button className="button pagination-next" disabled={!hasNextPages} onClick={() => setPage(page+1)}>Next page</button>
+                <button className="button pagination-previous" disabled={!hasPrevPages} onClick={() => setPage(page-1, 'dec')}>Previous</button>
+                <button className="button pagination-next" disabled={!hasNextPages} onClick={() => setPage(page+1, 'inc')}>Next page</button>
                 
                 {/*<ul className="pagination-list">
                     <li>

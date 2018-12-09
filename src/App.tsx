@@ -36,8 +36,9 @@ class App extends Component<{}, IAppState> {
         this.bindCollection();
     }
 
-    bindCollection() {
-        const offset = this.state.items.length ? this.state.items[this.LIMIT - 1]['name'] : null;
+    bindCollection(type?: string) {
+        const key = this.state.items.length - 1;
+        const offset = this.state.items.length ? this.state.items[key]['name'] : null;
 
         base.bindCollection('items', {
             context: this,
@@ -45,7 +46,11 @@ class App extends Component<{}, IAppState> {
             withIds: true,
             query: (ref: any) => {
                 if (offset) {
-                    return ref.orderBy('name', 'asc').startAt(offset).limit(this.LIMIT);
+                    if (type === 'dec') {
+                        return ref.orderBy('name', 'asc').endAt(offset).limit(this.LIMIT);
+                    }
+
+                    return ref.orderBy('name', 'asc').startAfter(offset).limit(this.LIMIT);
                 }
                     
                 return ref.orderBy('name', 'asc').limit(this.LIMIT);                
@@ -61,12 +66,12 @@ class App extends Component<{}, IAppState> {
             .catch((error: any) => console.log(error));
     }
 
-    setPage = (page: number) => {
+    setPage = (page: number, type: 'inc'|'dec') => {
         this.setState({
             page,
         }, () => {
             base.reset();
-            this.bindCollection();
+            this.bindCollection(type);
         });
     }
 
