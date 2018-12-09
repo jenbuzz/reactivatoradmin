@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
-import { ItemContent } from '../Item';
 
 interface PaginationProps {
-    items: ItemContent[];
+    total: number;
     page: number;
     limit: number;
+    setPage: (page: number) => void;
 }
 
 class Pagination extends Component<PaginationProps, {}> {
     render() {
-        const { items, limit, page } = this.props;
-        const count = items ? items.length : 0;
+        const { total, limit, page, setPage } = this.props;
 
-        if (count === 0) {
+        if (total === 0) {
             return null;
         }
 
-        const totalPages = Math.ceil(count / limit);
+        const totalPages = Math.ceil(total / limit);
         const hasPrevPages = page > 0;
         const hasNextPages = page < totalPages;
 
         return (
             <nav className="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
-                <button className="button pagination-previous" disabled={!hasPrevPages}>Previous</button>
-                <button className="button pagination-next" disabled={!hasNextPages}>Next page</button>
+                <button className="button pagination-previous" disabled={!hasPrevPages} onClick={() => setPage(page-1)}>Previous</button>
+                <button className="button pagination-next" disabled={!hasNextPages} onClick={() => setPage(page+1)}>Next page</button>
                 
                 {/*<ul className="pagination-list">
                     <li>
