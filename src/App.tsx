@@ -9,6 +9,7 @@ import './App.scss';
 interface IAppState {
     items: ItemContent[];
     total: number;
+    loading: boolean;
 }
 
 class App extends Component<{}, IAppState> {
@@ -17,6 +18,7 @@ class App extends Component<{}, IAppState> {
     state = {
         items: [],
         total: 0,
+        loading: false,
     };
 
     componentDidMount() {
@@ -35,13 +37,22 @@ class App extends Component<{}, IAppState> {
     }
 
     bindCollection() {
+        this.setState({
+            loading: true,
+        });
+        
         base.bindCollection('items', {
             context: this,
             state: 'items',
             withIds: true,
             query: (ref: any) => {                    
                 return ref.orderBy('name', 'asc').limit(this.state.items.length + this.LIMIT);
-            }
+            },
+            then: () => {
+                this.setState({
+                    loading: false,
+                });
+            },
         });
     }
 
@@ -68,21 +79,23 @@ class App extends Component<{}, IAppState> {
                             <Header />
                             <div className="columns">
                                 <div className="column is-12">
-                                    <div className="card">
-                                        <div className="card-table">
-                                            <div className="content">
-                                                {Object.keys(this.state.items).map(
-                                                    (key: any) => (
-                                                        <Item
-                                                            key={key}
-                                                            item={this.state.items[key]}
-                                                            updateItem={this.updateItem}
-                                                        />
-                                                    )
-                                                )}
+                                    {this.state.loading ? <div>Loading...</div> : (
+                                        <div className="card">
+                                            <div className="card-table">
+                                                <div className="content">
+                                                    {Object.keys(this.state.items).map(
+                                                        (key: any) => (
+                                                            <Item
+                                                                key={key}
+                                                                item={this.state.items[key]}
+                                                                updateItem={this.updateItem}
+                                                            />
+                                                        )
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
                             </div>
                             <Pagination hasLoadedAll={this.state.items.length === this.state.total} loadMore={this.loadMore} />
