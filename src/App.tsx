@@ -79,7 +79,8 @@ class App extends Component<{}, IAppState> {
                             <Header />
                             <div className="columns">
                                 <div className="column is-12">
-                                    {this.state.loading ? <div>Loading...</div> : (
+                                    {this.state.loading ? <div>Loading...</div> : ''}
+                                    {this.state.items.length === 0 ? '' : (
                                         <div className="card">
                                             <div className="card-table">
                                                 <div className="content">
