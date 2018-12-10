@@ -30,7 +30,7 @@ class App extends Component<{}, IAppState> {
                         total: data.length,
                     });
                 }
-            }
+            },
         });
 
         this.bindCollection();
@@ -40,12 +40,12 @@ class App extends Component<{}, IAppState> {
         this.setState({
             loading: true,
         });
-        
+
         base.bindCollection('items', {
             context: this,
             state: 'items',
             withIds: true,
-            query: (ref: any) => {                    
+            query: (ref: any) => {
                 return ref.orderBy('name', 'asc').limit(this.state.items.length + this.LIMIT);
             },
             then: () => {
@@ -57,7 +57,7 @@ class App extends Component<{}, IAppState> {
     }
 
     updateItem = (item: ItemContent) => {
-        const {id, ...baseItem} = item;
+        const { id, ...baseItem } = item;
 
         base.updateDoc(`items/${id}`, baseItem)
             .then(() => console.log('updated doc...'))
@@ -98,7 +98,10 @@ class App extends Component<{}, IAppState> {
                                     )}
                                 </div>
                             </div>
-                            <Pagination hasLoadedAll={this.state.items.length === this.state.total} loadMore={this.loadMore} />
+                            <Pagination
+                                hasLoadedAll={this.state.items.length === this.state.total}
+                                loadMore={this.loadMore}
+                            />
                         </div>
                     </div>
                 </div>

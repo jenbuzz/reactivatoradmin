@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-interface PaginationProps {
+interface IPaginationProps {
     hasLoadedAll: boolean;
     loadMore: () => void;
 }
 
-class Pagination extends Component<PaginationProps, {}> {
+class Pagination extends Component<IPaginationProps, {}> {
     render() {
         const { hasLoadedAll, loadMore } = this.props;
 
@@ -15,7 +15,7 @@ class Pagination extends Component<PaginationProps, {}> {
 
         return (
             <nav className="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
-                <button className="button pagination-previous" onClick={() => loadMore()}>Load More</button>
+                <button className="button pagination-previous" onClick={loadMore}>Load More</button>
             </nav>
         );
     }
