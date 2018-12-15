@@ -3,7 +3,8 @@ import { Provider } from 'react-redux';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
 import ItemContainer from './components/ItemContainer';
-import store, { firestoreInstance } from './store';
+import store from './store';
+import { getCollectionCount } from './helpers/firestoreHelper';
 import './App.scss';
 
 interface IAppState {
@@ -19,12 +20,11 @@ class App extends Component<{}, IAppState> {
         loading: false,
     };
 
-    componentDidMount() {
-        firestoreInstance.collection(process.env.REACT_APP_FIREBASE_COLLECTION).get().then((snapShot: any) => {
-            this.setState({
-                total: snapShot.size,
-            });
-        }).catch(() => console.log('Error: Connecting to Firestore'));
+    async componentDidMount() {
+        const total = await getCollectionCount();
+        this.setState({
+            total,
+        });
 
         this.loadMore(1);
     }
