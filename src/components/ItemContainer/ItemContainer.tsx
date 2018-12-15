@@ -79,6 +79,6 @@ export default connect((state: any) => {
     const key = process.env.REACT_APP_FIREBASE_COLLECTION ? process.env.REACT_APP_FIREBASE_COLLECTION : '';
 
     return {
-        items: state.firestore.ordered[key],
+        items: state ? state.firestore.ordered[key] : [],
     };
 })(ItemContainer);
