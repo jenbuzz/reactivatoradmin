@@ -18,3 +18,41 @@ firestore.settings({
 const base = Rebase.createClass(firestore);
 
 export default base;
+
+// Component:
+/*
+componentDidMount() {
+    base.listenToCollection('items', {
+        context: this,
+        then: (data: any) => {
+            if (data) {
+                this.setState({
+                    total: data.length,
+                });
+            }
+        },
+    });
+
+    this.bindCollection();
+}
+
+bindCollection() {
+    this.setState({
+        loading: true,
+    });
+
+    base.bindCollection('items', {
+        context: this,
+        state: 'items',
+        withIds: true,
+        query: (ref: any) => {
+            return ref.orderBy('name', 'asc').limit(this.state.items.length + this.LIMIT);
+        },
+        then: () => {
+            this.setState({
+                loading: false,
+            });
+        },
+    });
+}
+*/
