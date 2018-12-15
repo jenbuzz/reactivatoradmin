@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Item, { ItemContent } from './../Item';
 import Pagination from './../Pagination';
 
-interface IAppState {
+interface ItemContainerState {
     page: number;
 }
 
@@ -15,7 +15,7 @@ interface ItemContainerProps {
     updateItem: (id: any, item: any) => void;
 }
 
-class ItemContainer extends Component<ItemContainerProps, IAppState> {    
+class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {    
     state = {
         page: 1,
     };
