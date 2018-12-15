@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
-import { Provider } from 'react-redux';
-import store from './store';
 import ItemContainer from './components/ItemContainer';
+import store from './store';
 import './App.scss';
 
 interface IAppState {
