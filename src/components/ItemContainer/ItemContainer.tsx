@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Item, { ItemContent } from './../Item';
 import Pagination from './../Pagination';
+import './ItemContainer.scss';
 
 interface ItemContainerState {
     page: number;
@@ -46,7 +47,7 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
         }
 
         return (
-            <Fragment>
+            <section className="section item-container">
                 <div className="columns">
                     <div className="column is-12">
                         <div className="card">
@@ -70,7 +71,7 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
                     hasLoadedAll={items.length === this.props.total}
                     loadMore={this.loadMore}
                 />
-            </Fragment>
+            </section>
         );
     }
 }

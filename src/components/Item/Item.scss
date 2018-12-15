@@ -4,6 +4,10 @@
     height: 100px;
     margin-bottom: 1.75rem !important;
 
+    &:last-child {
+        margin-bottom: 0 !important;
+    }
+
     &--image {
         img {
             max-height: 80px;
