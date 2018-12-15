@@ -76,7 +76,9 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
 }
 
 export default connect((state: any) => {
+    const key = process.env.REACT_APP_FIREBASE_COLLECTION ? process.env.REACT_APP_FIREBASE_COLLECTION : '';
+
     return {
-        items: state.firestore.ordered.items,
+        items: state.firestore.ordered[key],
     };
 })(ItemContainer);

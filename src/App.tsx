@@ -20,7 +20,7 @@ class App extends Component<{}, IAppState> {
     };
 
     componentDidMount() {
-        firestoreInstance.collection('items').get().then((snapShot: any) => {
+        firestoreInstance.collection(process.env.REACT_APP_FIREBASE_COLLECTION).get().then((snapShot: any) => {
             this.setState({
                 total: snapShot.size,
             });
@@ -31,12 +31,12 @@ class App extends Component<{}, IAppState> {
 
     loadMore = (page: number) => {
         const { firestore } = store;
-        firestore.get({ collection: 'items', orderBy: 'name', limit: App.LIMIT * page });
+        firestore.get({ collection: process.env.REACT_APP_FIREBASE_COLLECTION, orderBy: 'name', limit: App.LIMIT * page });
     }
 
     updateItem = (id: any, item: any) => {
         const { firestore } = store;
-        firestore.set({ collection: 'items', doc: id }, item);
+        firestore.set({ collection: process.env.REACT_APP_FIREBASE_COLLECTION, doc: id }, item);
     }
 
     render() {
