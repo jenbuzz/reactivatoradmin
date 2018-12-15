@@ -1,5 +1,5 @@
 import { createStore, combineReducers, compose } from 'redux';
-import { reduxFirestore, firestoreReducer } from 'redux-firestore';
+import { reduxFirestore, firestoreReducer, getFirestore } from 'redux-firestore';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -24,5 +24,7 @@ const rootReducer = combineReducers({
 });
 
 const store = createStoreWithFirebase(rootReducer, {});
+
+export const firestoreInstance = getFirestore(firebase);
 
 export default store;
