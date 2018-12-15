@@ -16,7 +16,7 @@ interface ItemContainerProps {
     updateItem: (id: any, item: any) => void;
 }
 
-class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {    
+class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
     state = {
         page: 1,
     };
@@ -28,8 +28,10 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
     }
 
     loadMore = () => {
-        this.setState(state => {
-            return {page: state.page + 1};
+        this.setState((state: any) => {
+            return {
+                page: state.page + 1,
+            };
         }, () => {
             this.props.loadMore(this.state.page);
         });

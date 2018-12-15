@@ -31,12 +31,19 @@ class App extends Component<{}, IAppState> {
 
     loadMore = (page: number) => {
         const { firestore } = store;
-        firestore.get({ collection: process.env.REACT_APP_FIREBASE_COLLECTION, orderBy: 'name', limit: App.LIMIT * page });
+        firestore.get({
+            collection: process.env.REACT_APP_FIREBASE_COLLECTION,
+            orderBy: 'name',
+            limit: App.LIMIT * page,
+        });
     }
 
     updateItem = (id: any, item: any) => {
         const { firestore } = store;
-        firestore.set({ collection: process.env.REACT_APP_FIREBASE_COLLECTION, doc: id }, item);
+        firestore.set({
+            collection: process.env.REACT_APP_FIREBASE_COLLECTION,
+            doc: id,
+        }, item);
     }
 
     render() {
@@ -48,7 +55,12 @@ class App extends Component<{}, IAppState> {
                             <div className="column is-12">
                                 <Navigation />
                                 <Header />
-                                <ItemContainer total={this.state.total} loadMore={this.loadMore} loading={this.state.loading} updateItem={this.updateItem} />
+                                <ItemContainer
+                                    total={this.state.total}
+                                    loadMore={this.loadMore}
+                                    loading={this.state.loading}
+                                    updateItem={this.updateItem}
+                                />
                             </div>
                         </div>
                     </div>
