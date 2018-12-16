@@ -52,20 +52,16 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
             <section className="section item-container">
                 <div className="columns">
                     <div className="column is-12">
-                        <div className="card">
-                            <div className="card-table">
-                                <div className="content">
-                                    {Object.keys(this.props.items).map(
-                                        (key: any) => (
-                                            <Item
-                                                key={key}
-                                                item={this.props.items[key]}
-                                                updateItem={this.updateItem}
-                                            />
-                                        )
-                                    )}
-                                </div>
-                            </div>
+                        <div className="content">
+                            {Object.keys(this.props.items).map(
+                                (key: any) => (
+                                    <Item
+                                        key={key}
+                                        item={this.props.items[key]}
+                                        updateItem={this.updateItem}
+                                    />
+                                )
+                            )}
                         </div>
                     </div>
                 </div>
