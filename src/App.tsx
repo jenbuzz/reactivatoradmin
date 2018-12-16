@@ -36,20 +36,20 @@ class App extends Component<{}, IAppState> {
         this.setState({
             loading: true,
         }, () => {
-            store.firestore.get({
+            store.firestore.setListener({
                 collection: getCollectionName(),
                 orderBy: 'name',
                 limit: App.LIMIT * page,
-            }).then(() => {
-                this.setState({
-                    loading: false,
-                });
+            });
+
+            this.setState({
+                loading: false,
             });
         });
     }
 
     updateItem = (id: number, item: ItemContent) => {
-        store.firestore.set({
+        store.firestore.update({
             collection: getCollectionName(),
             doc: id,
         }, item);
