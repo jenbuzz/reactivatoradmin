@@ -1,4 +1,4 @@
-import { firestoreInstance } from './../store';
+import { firestoreInstance } from '../store/store';
 
 export const getCollectionName = () => {
     if (process.env.REACT_APP_FIREBASE_COLLECTION) {

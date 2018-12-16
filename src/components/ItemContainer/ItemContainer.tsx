@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Item, { ItemContent } from './../Item';
 import Pagination from './../Pagination';
-import { State } from './../../store';
+import { State } from '../../store/store';
 import './ItemContainer.scss';
 
 interface ItemContainerState {
