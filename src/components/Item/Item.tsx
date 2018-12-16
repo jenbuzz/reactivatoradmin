@@ -27,7 +27,7 @@ class Item extends Component<ItemProps, ItemState> {
         isImageModalVisible: false,
     };
 
-    toggleIsActive = (event: SyntheticEvent) => {
+    toggleIsActive = () => {
         const updatedItem = {
             ...this.props.item,
             isactive: !this.props.item.isactive,

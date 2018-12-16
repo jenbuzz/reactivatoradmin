@@ -19,9 +19,15 @@ firestore.settings({
 
 const createStoreWithFirebase = compose(reduxFirestore(firebase))(createStore);
 
-const rootReducer = combineReducers({
+export interface State {
+    firestore: any;
+}
+
+const initialState: State = {
     firestore: firestoreReducer,
-});
+};
+
+const rootReducer = combineReducers(initialState);
 
 const devTools = (window as any).__REDUX_DEVTOOLS_EXTENSION__ ?
     (window as any).__REDUX_DEVTOOLS_EXTENSION__() : () => {};

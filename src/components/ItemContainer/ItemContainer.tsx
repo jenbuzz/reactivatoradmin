@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Item, { ItemContent } from './../Item';
 import Pagination from './../Pagination';
+import { State } from './../../store';
 import './ItemContainer.scss';
 
 interface ItemContainerState {
@@ -31,7 +32,7 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
     }
 
     loadMore = () => {
-        this.setState((state: any) => {
+        this.setState((state: ItemContainerState) => {
             return {
                 page: state.page + 1,
             };
@@ -77,7 +78,7 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
     }
 }
 
-export default connect((state: any) => {
+export default connect((state: State) => {
     const key = process.env.REACT_APP_FIREBASE_COLLECTION 
         ? process.env.REACT_APP_FIREBASE_COLLECTION : '';
 
