@@ -32,10 +32,18 @@ class App extends Component<{}, IAppState> {
     }
 
     loadMore = (page: number) => {
-        store.firestore.get({
-            collection: getCollectionName(),
-            orderBy: 'name',
-            limit: App.LIMIT * page,
+        this.setState({
+            loading: true,
+        }, () => {
+            store.firestore.get({
+                collection: getCollectionName(),
+                orderBy: 'name',
+                limit: App.LIMIT * page,
+            }).then(() => {
+                this.setState({
+                    loading: false,
+                });
+            });
         });
     }
 
