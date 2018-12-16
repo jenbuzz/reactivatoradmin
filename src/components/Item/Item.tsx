@@ -3,7 +3,7 @@ import Modal from './../Modal';
 import './Item.scss';
 
 export interface ItemContent {
-    id: number;
+    id?: number;
     name: string;
     isactive: boolean;
     image: string;

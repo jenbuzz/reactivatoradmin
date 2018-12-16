@@ -4,7 +4,8 @@ import Header from './components/Header';
 import Navigation from './components/Navigation';
 import ItemContainer from './components/ItemContainer';
 import store from './store';
-import { getCollectionCount } from './helpers/firestoreHelper';
+import { getCollectionName, getCollectionCount } from './helpers/firestoreHelper';
+import { ItemContent } from './components/Item';
 import './App.scss';
 
 interface IAppState {
@@ -20,28 +21,27 @@ class App extends Component<{}, IAppState> {
         loading: false,
     };
 
-    async componentDidMount() {
-        const total = await getCollectionCount();
-        this.setState({
-            total,
-        });
+    componentDidMount() {
+        getCollectionCount().then((total: number) => {
+            this.setState({
+                total,
+            });
 
-        this.loadMore(1);
+            this.loadMore(1);
+        });
     }
 
     loadMore = (page: number) => {
-        const { firestore } = store;
-        firestore.get({
-            collection: process.env.REACT_APP_FIREBASE_COLLECTION,
+        store.firestore.get({
+            collection: getCollectionName(),
             orderBy: 'name',
             limit: App.LIMIT * page,
         });
     }
 
-    updateItem = (id: any, item: any) => {
-        const { firestore } = store;
-        firestore.set({
-            collection: process.env.REACT_APP_FIREBASE_COLLECTION,
+    updateItem = (id: number, item: ItemContent) => {
+        store.firestore.set({
+            collection: getCollectionName(),
             doc: id,
         }, item);
     }

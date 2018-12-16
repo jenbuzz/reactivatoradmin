@@ -13,7 +13,7 @@ interface ItemContainerProps {
     total: number;
     loadMore: (page: number) => void;
     loading: boolean;
-    updateItem: (id: any, item: any) => void;
+    updateItem: (id: number, item: ItemContent) => void;
 }
 
 class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
@@ -23,6 +23,10 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
 
     updateItem = (item: ItemContent) => {
         const { id, ...baseItem } = item;
+
+        if (!id) {
+            return;
+        }
 
         this.props.updateItem(id, baseItem);
     }
@@ -79,7 +83,8 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
 }
 
 export default connect((state: any) => {
-    const key = process.env.REACT_APP_FIREBASE_COLLECTION ? process.env.REACT_APP_FIREBASE_COLLECTION : '';
+    const key = process.env.REACT_APP_FIREBASE_COLLECTION 
+        ? process.env.REACT_APP_FIREBASE_COLLECTION : '';
 
     return {
         items: state ? state.firestore.ordered[key] : [],

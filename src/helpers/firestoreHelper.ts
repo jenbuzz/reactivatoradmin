@@ -1,8 +1,16 @@
 import { firestoreInstance } from './../store';
 
-export const getCollectionCount = () => {
-    return firestoreInstance
-        .collection(process.env.REACT_APP_FIREBASE_COLLECTION)
+export const getCollectionName = () => {
+    if (process.env.REACT_APP_FIREBASE_COLLECTION) {
+        return process.env.REACT_APP_FIREBASE_COLLECTION;
+    }
+
+    throw new Error('Firebase collection is not set as an environment variable.');
+}
+
+export const getCollectionCount = async () => {
+    return await firestoreInstance
+        .collection(getCollectionName())
         .get()
         .then((snapShot: any) => {
             return snapShot.size;
