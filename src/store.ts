@@ -23,7 +23,10 @@ const rootReducer = combineReducers({
     firestore: firestoreReducer,
 });
 
-const store = createStoreWithFirebase(rootReducer, {});
+const devTools = (window as any).__REDUX_DEVTOOLS_EXTENSION__ ?
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__() : () => {};
+
+const store = createStoreWithFirebase(rootReducer, {}, devTools);
 
 export const firestoreInstance = getFirestore(firebase);
 
