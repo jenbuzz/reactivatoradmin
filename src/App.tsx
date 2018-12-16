@@ -63,10 +63,10 @@ class App extends Component<{}, IAppState> {
                             <div className="column is-12">
                                 <Navigation />
                                 <Header />
+                                {this.state.loading ? <div>Loading...</div> : ''}
                                 <ItemContainer
                                     total={this.state.total}
                                     loadMore={this.loadMore}
-                                    loading={this.state.loading}
                                     updateItem={this.updateItem}
                                 />
                             </div>

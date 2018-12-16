@@ -12,7 +12,6 @@ interface ItemContainerProps {
     items: ItemContent[];
     total: number;
     loadMore: (page: number) => void;
-    loading: boolean;
     updateItem: (id: number, item: ItemContent) => void;
 }
 
@@ -43,10 +42,6 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
 
     render() {
         const { items } = this.props;
-
-        if (this.props.loading) {
-            return <div>Loading...</div>;
-        }
 
         if (!items || !Array.isArray(items) || items.length === 0) {
             return null;

@@ -17,7 +17,7 @@ it('renders without crashing', () => {
     ReactDOM.render(
         (
             <Provider store={store}>
-                <ItemContainer total={5} loadMore={loadMore} loading={false} updateItem={updateItem} />
+                <ItemContainer total={5} loadMore={loadMore} updateItem={updateItem} />
             </Provider>
         ),
         div
