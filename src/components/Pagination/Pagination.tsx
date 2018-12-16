@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Pagination.scss';
 
 interface IPaginationProps {
     hasLoadedAll: boolean;
@@ -14,8 +15,8 @@ class Pagination extends Component<IPaginationProps, {}> {
         }
 
         return (
-            <nav className="pagination is-centered is-rounded" role="navigation" aria-label="pagination">
-                <button className="button pagination-previous" onClick={loadMore}>Load More</button>
+            <nav className="pagination" role="navigation" aria-label="pagination">
+                <button className="button is-rounded" onClick={loadMore}>Load More</button>
             </nav>
         );
     }
