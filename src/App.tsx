@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
+import LoadingSpinner from './components/LoadingSpinner';
 import ItemContainer from './components/ItemContainer';
 import store from './store';
 import { getCollectionName, getCollectionCount } from './helpers/firestoreHelper';
@@ -63,7 +64,7 @@ class App extends Component<{}, IAppState> {
                             <div className="column is-12">
                                 <Navigation />
                                 <Header />
-                                {this.state.loading ? <div>Loading...</div> : ''}
+                                {this.state.loading ? <LoadingSpinner /> : ''}
                                 <ItemContainer
                                     total={this.state.total}
                                     loadMore={this.loadMore}
