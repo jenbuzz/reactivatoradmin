@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import Header from './components/Header';
 import Navigation from './components/Navigation';
-import LoadingSpinner from './components/LoadingSpinner';
 import ItemContainer from './components/ItemContainer';
 import store from './store';
 import { getCollectionName, getCollectionCount } from './helpers/firestoreHelper';
@@ -11,7 +10,6 @@ import './App.scss';
 
 interface IAppState {
     total: number;
-    loading: boolean;
 }
 
 class App extends Component<{}, IAppState> {
@@ -19,7 +17,6 @@ class App extends Component<{}, IAppState> {
 
     state = {
         total: 0,
-        loading: false,
     };
 
     componentDidMount() {
@@ -33,18 +30,10 @@ class App extends Component<{}, IAppState> {
     }
 
     loadMore = (page: number) => {
-        this.setState({
-            loading: true,
-        }, () => {
-            store.firestore.setListener({
-                collection: getCollectionName(),
-                orderBy: 'name',
-                limit: App.LIMIT * page,
-            });
-
-            this.setState({
-                loading: false,
-            });
+        store.firestore.setListener({
+            collection: getCollectionName(),
+            orderBy: 'name',
+            limit: App.LIMIT * page,
         });
     }
 
@@ -64,7 +53,6 @@ class App extends Component<{}, IAppState> {
                             <div className="column is-12">
                                 <Navigation />
                                 <Header />
-                                {this.state.loading ? <LoadingSpinner /> : ''}
                                 <ItemContainer
                                     total={this.state.total}
                                     loadMore={this.loadMore}
