@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Item from './Item';
+import Item, { ItemContent } from './Item';
 
 describe('<Item />', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
+
+        const updateItem = (item: ItemContent) => {};
+
         ReactDOM.render(
             <Item
                 item={{
@@ -13,6 +16,7 @@ describe('<Item />', () => {
                     isactive: true,
                     image: '',
                 }}
+                updateItem={updateItem}
             />,
             div
         );
