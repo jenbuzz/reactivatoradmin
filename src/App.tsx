@@ -8,11 +8,11 @@ import { getCollectionName, getCollectionCount } from './helpers/firestoreHelper
 import { ItemContent } from './components/Item';
 import './App.scss';
 
-interface IAppState {
+interface AppState {
     total: number;
 }
 
-class App extends Component<{}, IAppState> {
+class App extends Component<{}, AppState> {
     static LIMIT: number = 3;
 
     state = {

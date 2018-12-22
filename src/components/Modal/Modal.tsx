@@ -2,17 +2,17 @@ import React, { Component, ReactNode, SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { ItemContent } from './../Item';
 
-interface IModalProps {
+interface ModalProps {
     item: ItemContent;
     isVisible: boolean;
     toggleVisibility: (event: SyntheticEvent) => void;
     children: (item: ItemContent, toggleVisibility: any) => ReactNode;
 }
 
-class Modal extends Component<IModalProps> {
+class Modal extends Component<ModalProps> {
     container: HTMLElement;
 
-    constructor(props: IModalProps) {
+    constructor(props: ModalProps) {
         super(props);
 
         this.container = document.createElement('div');
