@@ -1,25 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { shallow } from 'enzyme';
 import Item, { ItemContent } from './Item';
 
 describe('<Item />', () => {
     it('renders without crashing', () => {
-        const div = document.createElement('div');
-
+        const item: ItemContent = {
+            id: 1,
+            name: 'Lorem ipsum',
+            isactive: true,
+            image: '',
+        };
         const updateItem = (item: ItemContent) => {};
 
-        ReactDOM.render(
-            <Item
-                item={{
-                    id: 1,
-                    name: 'Lorem ipsum',
-                    isactive: true,
-                    image: '',
-                }}
-                updateItem={updateItem}
-            />,
-            div
-        );
-        ReactDOM.unmountComponentAtNode(div);
+        shallow(<Item item={item} updateItem={updateItem} />);
     });
 });
