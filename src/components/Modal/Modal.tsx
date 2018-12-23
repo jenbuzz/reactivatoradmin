@@ -1,6 +1,7 @@
 import React, { Component, ReactNode, SyntheticEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { ItemContent } from './../Item';
+import './Modal.scss';
 
 interface ModalProps {
     item: ItemContent;
