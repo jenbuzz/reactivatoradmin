@@ -9,3 +9,10 @@
 1. Copy '.env.example' to '.env' and fill in your Firestore API key and so on.
 2. Run 'yarn'.
 3. Run 'yarn start' or 'yarn dev'.
+
+## Update Dependencies
+
+Update to the latest version of React dependencies:
+```
+$ yarn upgrade --latest react-scripts react react-dom
+```
