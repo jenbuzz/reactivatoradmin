@@ -5,7 +5,6 @@ import './Modal.scss';
 
 interface ModalProps {
     item: ItemContent;
-    isVisible: boolean;
     toggleVisibility: (event: SyntheticEvent) => void;
     children: (item: ItemContent, toggleVisibility: any) => ReactNode;
 }
@@ -25,14 +24,10 @@ class Modal extends Component<ModalProps> {
     }
 
     render() {
-        const { item, isVisible, toggleVisibility, children } = this.props;
-
-        if (!isVisible) {
-            return null;
-        }
+        const { item, toggleVisibility, children } = this.props;
 
         return createPortal(
-            <div className={'modal' + (isVisible ? ' is-active' : '')}>
+            <div className="modal is-active">
                 <div className="modal-background" />
                 <div className="modal-content">
                     {children ? children(item, toggleVisibility) : ''}

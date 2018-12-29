@@ -94,48 +94,54 @@ class Item extends Component<ItemProps, ItemState> {
                     <button className="button is-info" onClick={this.toggleInfoModal}>Info</button>
                     <button className="button is-danger" onClick={this.toggleDeleteModal}>Delete</button>
                 </div>
-                <Modal item={item} isVisible={isDeleteModalVisible} toggleVisibility={this.toggleDeleteModal}>
-                    {(item: ItemContent, toggleVisibility: any) => (
-                        <div className="box">
-                            <p>Are you sure you want to delete <strong>{item.name}</strong>?</p>
-                            <button className="button is-primary" onClick={toggleVisibility}>Cancel</button>
-                            <button className="button is-danger">Delete</button>
-                        </div>
-                    )}
-                </Modal>
-                <Modal item={item} isVisible={isInfoModalVisible} toggleVisibility={this.toggleInfoModal}>
-                    {(item: ItemContent) => (
-                        <div className="box">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>ID</strong></td>
-                                        <td>{item.id}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Name</strong></td>
-                                        <td>{item.name}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Is active?</strong></td>
-                                        <td>{item.isactive}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Image</strong></td>
-                                        <td>{item.image}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
-                </Modal>
-                <Modal item={item} isVisible={isImageModalVisible} toggleVisibility={this.toggleImageModal}>
-                    {(item: ItemContent) => (
-                        <div className="has-text-centered">
-                            <img src={item.image} />
-                        </div>
-                    )}
-                </Modal>
+                {!isDeleteModalVisible ? '' :
+                    <Modal item={item} toggleVisibility={this.toggleDeleteModal}>
+                        {(item: ItemContent, toggleVisibility: any) => (
+                            <div className="box">
+                                <p>Are you sure you want to delete <strong>{item.name}</strong>?</p>
+                                <button className="button is-primary" onClick={toggleVisibility}>Cancel</button>
+                                <button className="button is-danger">Delete</button>
+                            </div>
+                        )}
+                    </Modal>
+                }
+                {!isInfoModalVisible ? '' :
+                    <Modal item={item} toggleVisibility={this.toggleInfoModal}>
+                        {(item: ItemContent) => (
+                            <div className="box">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>ID</strong></td>
+                                            <td>{item.id}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Name</strong></td>
+                                            <td>{item.name}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Is active?</strong></td>
+                                            <td>{item.isactive}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Image</strong></td>
+                                            <td>{item.image}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
+                    </Modal>
+                }
+                {!isImageModalVisible ? '' :
+                    <Modal item={item} toggleVisibility={this.toggleImageModal}>
+                        {(item: ItemContent) => (
+                            <div className="has-text-centered">
+                                <img src={item.image} />
+                            </div>
+                        )}
+                    </Modal>
+                }
             </div>
         );
     }

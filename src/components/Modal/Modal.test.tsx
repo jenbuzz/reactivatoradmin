@@ -15,7 +15,6 @@ describe('<Modal />', () => {
                     isactive: true,
                     image: '',
                 }}
-                isVisible={false}
                 toggleVisibility={toggleVisibility}
                 children={children}
             />
