@@ -32,15 +32,6 @@
     "redux-saga": "^0.16.2",
     "typescript": "^3.1.6"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "devDependencies": {
     "@types/dotenv": "^6.1.0",
     "@types/enzyme": "^3.1.15",
@@ -52,5 +43,21 @@
     "tslint": "^5.11.0",
     "tslint-config-standard": "^8.0.1",
     "tslint-react": "^3.6.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/index.js",
+      "!src/serviceWorker.js"
+    ]
   }
 }

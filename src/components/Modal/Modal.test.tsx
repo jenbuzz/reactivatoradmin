@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Modal from './Modal';
 
 describe('<Modal />', () => {
@@ -19,5 +19,28 @@ describe('<Modal />', () => {
                 children={children}
             />
         ));
+    });
+
+    it('renders component with children props', () => {
+        const item = {
+            id: 1,
+            name: 'Lorem ipsum',
+            isactive: true,
+            image: '',
+        };
+        const toggleVisibility = (event: SyntheticEvent) => true;
+        const children = () => <div>test</div>;
+
+        const modalComponent = mount((
+            <Modal
+                item={item}
+                toggleVisibility={toggleVisibility}
+                children={children}
+            />
+        )).instance();
+
+        const { props } = modalComponent;
+
+        expect(props.children).toBe(children);
     });
 });
