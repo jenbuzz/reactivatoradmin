@@ -4,4 +4,4 @@ node_js:
   - '10'
   - '8'
 
-after_success: yarn lint && yarn test
+after_success: yarn lint && yarn coveralls
