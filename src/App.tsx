@@ -20,13 +20,15 @@ class App extends Component<{}, AppState> {
     };
 
     componentDidMount() {
-        getCollectionCount().then((total: number) => {
-            this.setState({
-                total,
-            });
+        getCollectionCount()
+            .then((total: number) => {
+                this.setState({
+                    total,
+                });
 
-            this.loadMore(1);
-        });
+                this.loadMore(1);
+            })
+            .catch((error: any) => console.log(error));
     }
 
     loadMore = (page: number) => {

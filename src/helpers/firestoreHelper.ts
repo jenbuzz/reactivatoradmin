@@ -6,10 +6,10 @@ export const getCollectionName = () => {
     }
 
     throw new Error('Firebase collection is not set as an environment variable.');
-}
+};
 
-export const getCollectionCount = async () => {
-    return await firestoreInstance
+export const getCollectionCount = () => {
+    return firestoreInstance
         .collection(getCollectionName())
         .get()
         .then((snapShot: any) => {

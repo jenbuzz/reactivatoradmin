@@ -19,7 +19,11 @@
     "ordered-imports": false,
     "quotemark": [true, "single", "jsx-double"],
     "semicolon": [true, "always", "ignore-bound-class-methods"],
-    "space-before-function-paren": [true, "never"],
+    "space-before-function-paren": [true, {
+      "anonymous": "always",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
     "ter-indent": [true, 4, {"SwitchCase": 1}],
     "trailing-comma": [true, {
       "multiline": {

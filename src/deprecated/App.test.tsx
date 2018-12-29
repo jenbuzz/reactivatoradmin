@@ -1,6 +1,6 @@
 /**
  * DEPRECATED
- * 
+ *
  * This test is kept as reference for testing without enzyme.
  */
 

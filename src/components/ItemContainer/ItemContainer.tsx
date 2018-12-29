@@ -78,10 +78,11 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
 }
 
 export default connect((state: State) => {
-    const key = process.env.REACT_APP_FIREBASE_COLLECTION 
+    const key = process.env.REACT_APP_FIREBASE_COLLECTION
         ? process.env.REACT_APP_FIREBASE_COLLECTION : '';
 
-    const isLoading = state ? state.firestore.status.requesting[Object.keys(state.firestore.status.requesting)[0]] : false;
+    const isLoading = state
+        ? state.firestore.status.requesting[Object.keys(state.firestore.status.requesting)[0]] : false;
 
     return {
         items: state ? state.firestore.ordered[key] : [],
