@@ -1,6 +1,6 @@
 // DEPRECATED - keeping this for reference (Firestore connection with re-base)
 
-/*import Rebase from 're-base';
+import Rebase from 're-base';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -19,7 +19,7 @@ firestore.settings({
 
 const base = Rebase.createClass(firestore);
 
-export default base;*/
+export default base;
 
 // Component:
 /*
