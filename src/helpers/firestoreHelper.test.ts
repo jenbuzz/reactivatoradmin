@@ -23,12 +23,21 @@ describe('firestoreHelper -> getCollectionName', () => {
 describe('firestoreHelper -> getCollectionCount', () => {
     const getMock = jest.fn(() => {
         return new Promise((resolve, reject) => {
-            resolve({size: 2});
+            resolve({
+                size: 2,
+            });
         });
     });
-    const collectionMock = jest.fn((collectionName: string) => {return {get: getMock}});
+    const collectionMock = jest.fn((collectionName: string) => {
+        return {
+            get: getMock,
+        };
+    });
+    const firestoreInstanceMock = {
+        collection: collectionMock,
+    };
 
-    const firestoreHelper = new FirestoreHelper({collection: collectionMock});
+    const firestoreHelper = new FirestoreHelper(firestoreInstanceMock);
 
     test('should return collection count', () => {
         process.env.REACT_APP_FIREBASE_COLLECTION = 'test';

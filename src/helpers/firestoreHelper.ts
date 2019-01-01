@@ -11,7 +11,7 @@ export default class FirestoreHelper {
         if (process.env.REACT_APP_FIREBASE_COLLECTION) {
             return process.env.REACT_APP_FIREBASE_COLLECTION;
         }
-    
+
         throw new Error('Firebase collection is not set as an environment variable.');
     }
 
