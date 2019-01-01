@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
-    "lib": ["dom", "es5", "scripthost", "es2015.iterable"]
+    "lib": ["dom", "es5", "scripthost", "es2015.iterable", "es2015.promise"]
   },
   "include": [
     "src"
