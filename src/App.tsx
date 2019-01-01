@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Navigation from './components/Navigation';
 import ItemContainer from './components/ItemContainer';
 import store from './store';
-import { getCollectionName, getCollectionCount } from './helpers/firestoreHelper';
+import { firestoreHelper } from './helpers/firestoreHelper';
 import { ItemContent } from './components/Item';
 import './App.scss';
 
@@ -20,7 +20,7 @@ class App extends Component<{}, AppState> {
     };
 
     componentDidMount() {
-        getCollectionCount()
+        firestoreHelper.getCollectionCount()
             .then((total: number) => {
                 this.setState({
                     total,
@@ -33,7 +33,7 @@ class App extends Component<{}, AppState> {
 
     loadMore = (page: number) => {
         store.firestore.setListener({
-            collection: getCollectionName(),
+            collection: firestoreHelper.getCollectionName(),
             orderBy: 'name',
             limit: App.LIMIT * page,
         });
@@ -41,7 +41,7 @@ class App extends Component<{}, AppState> {
 
     updateItem = (id: number, item: ItemContent) => {
         store.firestore.update({
-            collection: getCollectionName(),
+            collection: firestoreHelper.getCollectionName(),
             doc: id,
         }, item);
     }
