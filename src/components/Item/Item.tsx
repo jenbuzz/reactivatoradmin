@@ -12,6 +12,7 @@ export interface ItemContent {
 interface ItemProps {
     item: ItemContent;
     updateItem: (item: ItemContent) => void;
+    deleteItem: (item: ItemContent) => void;
 }
 
 interface ItemState {
@@ -62,8 +63,20 @@ class Item extends Component<ItemProps, ItemState> {
         }
     };
 
+    handleDelete = (event: SyntheticEvent) => {
+        event.preventDefault();
+
+        this.props.deleteItem(this.props.item);
+
+        this.toggleDeleteModal(event);
+    };
+
     render() {
-        const { isInfoModalVisible, isDeleteModalVisible, isImageModalVisible } = this.state;
+        const {
+            isInfoModalVisible,
+            isDeleteModalVisible,
+            isImageModalVisible,
+        } = this.state;
         const { item } = this.props;
 
         return (
@@ -91,40 +104,83 @@ class Item extends Component<ItemProps, ItemState> {
                     />
                 </div>
                 <div className="column is-3 has-text-right item--action-buttons">
-                    <button className="button is-info" onClick={this.toggleInfoModal}>Info</button>
-                    <button className="button is-danger" onClick={this.toggleDeleteModal}>Delete</button>
+                    <button
+                        className="button is-info"
+                        onClick={this.toggleInfoModal}
+                    >
+                        Info
+                    </button>
+                    <button
+                        className="button is-danger"
+                        onClick={this.toggleDeleteModal}
+                    >
+                        Delete
+                    </button>
                 </div>
-                {!isDeleteModalVisible ? '' :
-                    <Modal item={item} toggleVisibility={this.toggleDeleteModal}>
-                        {(item: ItemContent, toggleVisibility: any) => (
+                {!isDeleteModalVisible ? (
+                    ''
+                ) : (
+                    <Modal
+                        item={item}
+                        toggleVisibility={this.toggleDeleteModal}
+                        handleAction={this.handleDelete}
+                    >
+                        {(
+                            item: ItemContent,
+                            toggleVisibility: any,
+                            handleAction: any
+                        ) => (
                             <div className="box">
-                                <p>Are you sure you want to delete <strong>{item.name}</strong>?</p>
-                                <button className="button is-primary" onClick={toggleVisibility}>Cancel</button>
-                                <button className="button is-danger">Delete</button>
+                                <p>
+                                    Are you sure you want to delete{' '}
+                                    <strong>{item.name}</strong>?
+                                </p>
+                                <button
+                                    className="button is-primary"
+                                    onClick={toggleVisibility}
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    className="button is-danger"
+                                    onClick={handleAction}
+                                >
+                                    Delete
+                                </button>
                             </div>
                         )}
                     </Modal>
-                }
-                {!isInfoModalVisible ? '' :
+                )}
+                {!isInfoModalVisible ? (
+                    ''
+                ) : (
                     <Modal item={item} toggleVisibility={this.toggleInfoModal}>
                         {(item: ItemContent) => (
                             <div className="box">
                                 <table>
                                     <tbody>
                                         <tr>
-                                            <td><strong>ID</strong></td>
+                                            <td>
+                                                <strong>ID</strong>
+                                            </td>
                                             <td>{item.id}</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Name</strong></td>
+                                            <td>
+                                                <strong>Name</strong>
+                                            </td>
                                             <td>{item.name}</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Is active?</strong></td>
+                                            <td>
+                                                <strong>Is active?</strong>
+                                            </td>
                                             <td>{item.isactive}</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Image</strong></td>
+                                            <td>
+                                                <strong>Image</strong>
+                                            </td>
                                             <td>{item.image}</td>
                                         </tr>
                                     </tbody>
@@ -132,8 +188,10 @@ class Item extends Component<ItemProps, ItemState> {
                             </div>
                         )}
                     </Modal>
-                }
-                {!isImageModalVisible ? '' :
+                )}
+                {!isImageModalVisible ? (
+                    ''
+                ) : (
                     <Modal item={item} toggleVisibility={this.toggleImageModal}>
                         {(item: ItemContent) => (
                             <div className="has-text-centered">
@@ -141,7 +199,7 @@ class Item extends Component<ItemProps, ItemState> {
                             </div>
                         )}
                     </Modal>
-                }
+                )}
             </div>
         );
     }

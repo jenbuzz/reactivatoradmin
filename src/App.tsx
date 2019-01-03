@@ -20,7 +20,8 @@ class App extends Component<{}, AppState> {
     };
 
     componentDidMount() {
-        firestoreHelper.getCollectionCount()
+        firestoreHelper
+            .getCollectionCount()
             .then((total: number) => {
                 this.setState({
                     total,
@@ -37,14 +38,28 @@ class App extends Component<{}, AppState> {
             orderBy: 'name',
             limit: App.LIMIT * page,
         });
-    }
+    };
 
     updateItem = (id: number, item: ItemContent) => {
-        store.firestore.update({
+        store.firestore.update(
+            {
+                collection: firestoreHelper.getCollectionName(),
+                doc: id,
+            },
+            item
+        );
+    };
+
+    deleteItem = (id: number) => {
+        store.firestore.delete({
             collection: firestoreHelper.getCollectionName(),
             doc: id,
-        }, item);
-    }
+        });
+
+        this.setState(state => ({
+            total: state.total - 1,
+        }));
+    };
 
     render() {
         return (
@@ -59,6 +74,7 @@ class App extends Component<{}, AppState> {
                                     total={this.state.total}
                                     loadMore={this.loadMore}
                                     updateItem={this.updateItem}
+                                    deleteItem={this.deleteItem}
                                 />
                             </div>
                         </div>

@@ -16,6 +16,7 @@ interface ItemContainerProps {
     total: number;
     loadMore: (page: number) => void;
     updateItem: (id: number, item: ItemContent) => void;
+    deleteItem: (id: number) => void;
 }
 
 class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
@@ -31,17 +32,30 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
         }
 
         this.props.updateItem(id, baseItem);
-    }
+    };
+
+    deleteItem = (item: ItemContent) => {
+        const { id } = item;
+
+        if (!id) {
+            return;
+        }
+
+        this.props.deleteItem(id);
+    };
 
     loadMore = () => {
-        this.setState((state: ItemContainerState) => {
-            return {
-                page: state.page + 1,
-            };
-        }, () => {
-            this.props.loadMore(this.state.page);
-        });
-    }
+        this.setState(
+            (state: ItemContainerState) => {
+                return {
+                    page: state.page + 1,
+                };
+            },
+            () => {
+                this.props.loadMore(this.state.page);
+            }
+        );
+    };
 
     render() {
         const { items, isLoading } = this.props;
@@ -49,7 +63,9 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
         return (
             <Fragment>
                 {isLoading ? <LoadingSpinner /> : ''}
-                {!items || !Array.isArray(items) || items.length === 0 ? '' :
+                {!items || !Array.isArray(items) || items.length === 0 ? (
+                    ''
+                ) : (
                     <section className="section item-container">
                         <div className="columns">
                             <div className="column is-12">
@@ -60,6 +76,7 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
                                                 key={key}
                                                 item={this.props.items[key]}
                                                 updateItem={this.updateItem}
+                                                deleteItem={this.deleteItem}
                                             />
                                         )
                                     )}
@@ -71,7 +88,7 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
                             loadMore={this.loadMore}
                         />
                     </section>
-                }
+                )}
             </Fragment>
         );
     }
@@ -79,10 +96,14 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
 
 export default connect((state: State) => {
     const key = process.env.REACT_APP_FIREBASE_COLLECTION
-        ? process.env.REACT_APP_FIREBASE_COLLECTION : '';
+        ? process.env.REACT_APP_FIREBASE_COLLECTION
+        : '';
 
     const isLoading = state
-        ? state.firestore.status.requesting[Object.keys(state.firestore.status.requesting)[0]] : false;
+        ? state.firestore.status.requesting[
+              Object.keys(state.firestore.status.requesting)[0]
+          ]
+        : false;
 
     return {
         items: state ? state.firestore.ordered[key] : [],
