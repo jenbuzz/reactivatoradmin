@@ -12,7 +12,9 @@ export default class FirestoreHelper {
             return process.env.REACT_APP_FIREBASE_COLLECTION;
         }
 
-        throw new Error('Firebase collection is not set as an environment variable.');
+        throw new Error(
+            'Firebase collection is not set as an environment variable.'
+        );
     }
 
     getCollectionCount() {
@@ -22,7 +24,10 @@ export default class FirestoreHelper {
             .then((snapShot: any) => {
                 return snapShot.size;
             })
-            .catch(() => console.log('Error: Connecting to Firestore'));
+            .catch(() => {
+                console.log('Error: Connecting to Firestore');
+                return null;
+            });
     }
 }
 
