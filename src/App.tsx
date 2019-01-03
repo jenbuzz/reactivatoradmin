@@ -56,7 +56,7 @@ class App extends Component<{}, AppState> {
             doc: id,
         });
 
-        this.setState(state => ({
+        this.setState((state: AppState) => ({
             total: state.total - 1,
         }));
     };
