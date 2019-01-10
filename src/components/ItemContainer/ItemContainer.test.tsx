@@ -10,13 +10,21 @@ describe('<ItemContainer />', () => {
     const store = createStoreWithFirebase(() => {}, {});
 
     const loadMore = (page: number) => {};
+    const addItem = (item: any) => {};
     const updateItem = (id: any, item: any) => {};
+    const deleteItem = (id: number) => {};
 
     it('renders without crashing', () => {
-        mount((
+        mount(
             <Provider store={store}>
-                <ItemContainer total={5} loadMore={loadMore} updateItem={updateItem} />
+                <ItemContainer
+                    total={5}
+                    loadMore={loadMore}
+                    addItem={addItem}
+                    updateItem={updateItem}
+                    deleteItem={deleteItem}
+                />
             </Provider>
-        ));
+        );
     });
 });
