@@ -11,7 +11,10 @@ describe('<Item />', () => {
             image: '',
         };
         const updateItem = (item: ItemContent) => {};
+        const deleteItem = (item: ItemContent) => {};
 
-        shallow(<Item item={item} updateItem={updateItem} />);
+        shallow(
+            <Item item={item} updateItem={updateItem} deleteItem={deleteItem} />
+        );
     });
 });
