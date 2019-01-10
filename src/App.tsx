@@ -40,6 +40,15 @@ class App extends Component<{}, AppState> {
         });
     };
 
+    addItem = (item: ItemContent) => {
+        store.firestore.add(
+            {
+                collection: firestoreHelper.getCollectionName(),
+            },
+            item
+        );
+    };
+
     updateItem = (id: number, item: ItemContent) => {
         store.firestore.update(
             {
@@ -73,6 +82,7 @@ class App extends Component<{}, AppState> {
                                 <ItemContainer
                                     total={this.state.total}
                                     loadMore={this.loadMore}
+                                    addItem={this.addItem}
                                     updateItem={this.updateItem}
                                     deleteItem={this.deleteItem}
                                 />

@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import Item, { ItemContent } from './../Item';
 import Pagination from './../Pagination';
 import LoadingSpinner from './../LoadingSpinner';
-import { State } from '../../store/store';
+import { State } from './../../store/store';
+import AddItem from './../AddItem';
 import './ItemContainer.scss';
 
 interface ItemContainerState {
@@ -15,6 +16,7 @@ interface ItemContainerProps {
     isLoading: boolean;
     total: number;
     loadMore: (page: number) => void;
+    addItem: (item: ItemContent) => void;
     updateItem: (id: number, item: ItemContent) => void;
     deleteItem: (id: number) => void;
 }
@@ -22,6 +24,10 @@ interface ItemContainerProps {
 class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
     state = {
         page: 1,
+    };
+
+    addItem = (item: ItemContent) => {
+        this.props.addItem(item);
     };
 
     updateItem = (item: ItemContent) => {
@@ -63,6 +69,7 @@ class ItemContainer extends Component<ItemContainerProps, ItemContainerState> {
         return (
             <Fragment>
                 {isLoading ? <LoadingSpinner /> : ''}
+                <AddItem addItem={this.addItem} />
                 {!items || !Array.isArray(items) || items.length === 0 ? (
                     ''
                 ) : (
