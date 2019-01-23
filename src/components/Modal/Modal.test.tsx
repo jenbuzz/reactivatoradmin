@@ -7,7 +7,7 @@ describe('<Modal />', () => {
         const toggleVisibility = (event: SyntheticEvent) => true;
         const children = () => <div>test</div>;
 
-        shallow((
+        shallow(
             <Modal
                 item={{
                     id: 1,
@@ -18,7 +18,7 @@ describe('<Modal />', () => {
                 toggleVisibility={toggleVisibility}
                 children={children}
             />
-        ));
+        );
     });
 
     it('renders component with children props', () => {
@@ -31,16 +31,40 @@ describe('<Modal />', () => {
         const toggleVisibility = (event: SyntheticEvent) => true;
         const children = () => <div>test</div>;
 
-        const modalComponent = mount((
+        const modalComponent = mount(
             <Modal
                 item={item}
                 toggleVisibility={toggleVisibility}
                 children={children}
             />
-        )).instance();
+        ).instance();
 
         const { props } = modalComponent;
 
         expect(props.children).toBe(children);
+    });
+
+    it('should remove modal from dom on unmount', () => {
+        const toggleVisibility = (event: SyntheticEvent) => true;
+        const children = () => <div>test</div>;
+
+        const modalComponent = mount(
+            <Modal
+                item={{
+                    id: 1,
+                    name: 'Lorem ipsum',
+                    isactive: true,
+                    image: '',
+                }}
+                toggleVisibility={toggleVisibility}
+                children={children}
+            />
+        );
+
+        expect(document.body.childNodes.length).toBe(3);
+
+        modalComponent.unmount();
+
+        expect(document.body.childNodes.length).toBe(2);
     });
 });
