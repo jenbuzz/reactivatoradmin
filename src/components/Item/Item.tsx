@@ -105,12 +105,14 @@ class Item extends Component<ItemProps, ItemState> {
                 </div>
                 <div className="column is-3 has-text-right item--action-buttons">
                     <button
+                        id="btnInfo"
                         className="button is-info"
                         onClick={this.toggleInfoModal}
                     >
                         Info
                     </button>
                     <button
+                        id="btnDelete"
                         className="button is-danger"
                         onClick={this.toggleDeleteModal}
                     >
