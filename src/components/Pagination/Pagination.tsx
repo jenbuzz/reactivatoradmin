@@ -15,8 +15,18 @@ class Pagination extends Component<PaginationProps, {}> {
         }
 
         return (
-            <nav className="pagination" role="navigation" aria-label="pagination">
-                <button className="button is-rounded" onClick={loadMore}>Load More</button>
+            <nav
+                className="pagination"
+                role="navigation"
+                aria-label="pagination"
+            >
+                <button
+                    id="btnLoadMore"
+                    className="button is-rounded"
+                    onClick={loadMore}
+                >
+                    Load More
+                </button>
             </nav>
         );
     }
