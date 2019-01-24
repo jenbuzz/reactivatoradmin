@@ -40,8 +40,8 @@ describe('<Item />', () => {
     });
 
     it('should update isInfoModalVisible in state on info btn click', () => {
-        const img = wrapper.find('button#btnInfo').at(0);
-        img.simulate('click');
+        const btn = wrapper.find('button#btnInfo').at(0);
+        btn.simulate('click');
 
         const state = wrapper.state() as any;
 
@@ -49,8 +49,8 @@ describe('<Item />', () => {
     });
 
     it('should update isDeleteModalVisible in state on delete btn click', () => {
-        const img = wrapper.find('button#btnDelete').at(0);
-        img.simulate('click');
+        const btn = wrapper.find('button#btnDelete').at(0);
+        btn.simulate('click');
 
         const state = wrapper.state() as any;
 
