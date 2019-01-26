@@ -34,7 +34,7 @@ describe('<Item />', () => {
         const img = wrapper.find('img').at(0);
         img.simulate('click');
 
-        const state = wrapper.state() as any;
+        const state = wrapper.state();
 
         expect(state.isImageModalVisible).toBeTruthy();
     });
@@ -43,7 +43,7 @@ describe('<Item />', () => {
         const btn = wrapper.find('button#btnInfo').at(0);
         btn.simulate('click');
 
-        const state = wrapper.state() as any;
+        const state = wrapper.state();
 
         expect(state.isInfoModalVisible).toBeTruthy();
     });
@@ -52,7 +52,7 @@ describe('<Item />', () => {
         const btn = wrapper.find('button#btnDelete').at(0);
         btn.simulate('click');
 
-        const state = wrapper.state() as any;
+        const state = wrapper.state();
 
         expect(state.isDeleteModalVisible).toBeTruthy();
     });
