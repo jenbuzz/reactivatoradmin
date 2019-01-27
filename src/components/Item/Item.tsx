@@ -144,6 +144,7 @@ class Item extends Component<ItemProps, ItemState> {
                                     Cancel
                                 </button>
                                 <button
+                                    id="btnDeleteConfirm"
                                     className="button is-danger"
                                     onClick={handleAction}
                                 >

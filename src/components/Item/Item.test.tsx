@@ -39,6 +39,24 @@ describe('<Item />', () => {
         expect(state.isImageModalVisible).toBeTruthy();
     });
 
+    it('should not update isImageModalVisible in state on image click if no image exists', () => {
+        const newItem: ItemContent = {
+            id: 1,
+            name: 'Lorem ipsum',
+            isactive: true,
+            image: '',
+        };
+
+        wrapper.setProps({ item: newItem });
+
+        const img = wrapper.find('img').at(0);
+        img.simulate('click');
+
+        const state = wrapper.state();
+
+        expect(state.isImageModalVisible).toBeFalsy();
+    });
+
     it('should update isInfoModalVisible in state on info btn click', () => {
         const btn = wrapper.find('button#btnInfo').at(0);
         btn.simulate('click');
@@ -55,5 +73,15 @@ describe('<Item />', () => {
         const state = wrapper.state();
 
         expect(state.isDeleteModalVisible).toBeTruthy();
+    });
+
+    it('should call handleDelete on delete btn click in delete modal', () => {
+        const btn = wrapper.find('button#btnDelete').at(0);
+        btn.simulate('click');
+
+        const btnConfirm = wrapper.find('button#btnDeleteConfirm').at(0);
+        btnConfirm.simulate('click');
+
+        expect(deleteItem).toBeCalled();
     });
 });
