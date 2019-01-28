@@ -1,18 +1,35 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { createStore, compose } from 'redux';
-import { reduxFirestore } from 'redux-firestore';
 import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import ItemContainer from './ItemContainer';
 
 describe('<ItemContainer />', () => {
-    const createStoreWithFirebase = compose(reduxFirestore({}))(createStore);
-    const store = createStoreWithFirebase(() => {}, {});
+    const mockStore = configureStore([]);
+    const store = mockStore({
+        firestore: {
+            status: {
+                requesting: {
+                    items: false,
+                },
+            },
+            ordered: {
+                items: [
+                    {
+                        id: '1234-abcd',
+                        name: 'Lorem ipsum',
+                        image: '',
+                        isactive: false,
+                    },
+                ],
+            },
+        },
+    });
 
-    const loadMore = (page: number) => {};
-    const addItem = (item: any) => {};
-    const updateItem = (id: any, item: any) => {};
-    const deleteItem = (id: number) => {};
+    const loadMore = jest.fn();
+    const addItem = jest.fn();
+    const updateItem = jest.fn();
+    const deleteItem = jest.fn();
 
     it('renders without crashing', () => {
         mount(
