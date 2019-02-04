@@ -4,6 +4,6 @@ import Navigation from './Navigation';
 
 describe('<Navigation />', () => {
     it('renders without crashing', () => {
-        shallow(<Navigation />);
+        shallow(<Navigation setDarkMode={jest.fn()} isDarkMode={false} />);
     });
 });
