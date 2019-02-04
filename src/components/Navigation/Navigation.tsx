@@ -26,6 +26,13 @@ class Navigation extends Component<NavigationProps, {}> {
                         <a className="navbar-item" href="/">
                             <span>Home</span>
                         </a>
+                        <a
+                            className="navbar-item"
+                            href="https://github.com/jenbuzz/reactivatoradmin"
+                            target="_blank"
+                        >
+                            <span>GitHub</span>
+                        </a>
                     </div>
                     <div className="navbar-end">
                         <div className="navbar-item">
