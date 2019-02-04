@@ -10,6 +10,7 @@ import './App.scss';
 
 interface AppState {
     total: number;
+    darkMode: boolean;
 }
 
 class App extends Component<{}, AppState> {
@@ -17,6 +18,7 @@ class App extends Component<{}, AppState> {
 
     state = {
         total: 0,
+        darkMode: false,
     };
 
     componentDidMount() {
@@ -70,14 +72,28 @@ class App extends Component<{}, AppState> {
         }));
     };
 
+    setDarkMode = () => {
+        console.log('click');
+        this.setState((state: AppState) => ({
+            darkMode: !state.darkMode,
+        }));
+    };
+
     render() {
         return (
             <Provider store={store}>
-                <div className="App">
+                <div
+                    className={
+                        'App' + (this.state.darkMode ? ' dark-mode' : '')
+                    }
+                >
                     <div className="container">
                         <div className="columns">
                             <div className="column is-12">
-                                <Navigation />
+                                <Navigation
+                                    setDarkMode={this.setDarkMode}
+                                    isDarkMode={this.state.darkMode}
+                                />
                                 <Header />
                                 <ItemContainer
                                     total={this.state.total}
