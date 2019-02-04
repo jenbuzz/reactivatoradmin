@@ -26,12 +26,20 @@ class Navigation extends Component<NavigationProps, {}> {
                         <a className="navbar-item" href="/">
                             <span>Home</span>
                         </a>
-                        <a
-                            className="navbar-item"
-                            onClick={this.props.setDarkMode}
-                        >
-                            <span>Dark-Mode Switch</span>
-                        </a>
+                    </div>
+                    <div className="navbar-end">
+                        <div className="navbar-item">
+                            <input
+                                id="dark-mode-switch"
+                                type="checkbox"
+                                className="switch is-success"
+                                checked={this.props.isDarkMode}
+                                onChange={this.props.setDarkMode}
+                            />
+                            <label htmlFor="dark-mode-switch">
+                                Go {this.props.isDarkMode ? 'bright' : 'dark'}!
+                            </label>
+                        </div>
                     </div>
                 </div>
             </nav>
