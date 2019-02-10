@@ -4,5 +4,21 @@
     &.dark-mode {
         background-color: #424242;
         color: #ffffff;
+
+        input {
+            background-color: #424242;
+            color: #ffffff;
+
+            &::placeholder {
+                color: #b5b5b5;
+            }
+        }
+
+        .pagination {
+            .button {
+                background-color: #424242;
+                color: #ffffff;
+            }
+        }
     }
 }
