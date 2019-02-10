@@ -14,10 +14,12 @@ import {
     faHome,
     faLightbulb,
     faCaretDown,
+    faInfo,
+    faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-library.add(faHome, faLightbulb, faGithub, faCaretDown);
+library.add(faHome, faLightbulb, faGithub, faCaretDown, faInfo, faTrash);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

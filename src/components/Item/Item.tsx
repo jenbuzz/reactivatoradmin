@@ -1,4 +1,5 @@
 import React, { Component, SyntheticEvent } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from './../Modal';
 import './Item.scss';
 
@@ -109,14 +110,14 @@ class Item extends Component<ItemProps, ItemState> {
                         className="button is-info"
                         onClick={this.toggleInfoModal}
                     >
-                        Info
+                        <FontAwesomeIcon icon="info" />
                     </button>
                     <button
                         id="btnDelete"
                         className="button is-danger"
                         onClick={this.toggleDeleteModal}
                     >
-                        Delete
+                        <FontAwesomeIcon icon="trash" />
                     </button>
                 </div>
                 {!isDeleteModalVisible ? (
