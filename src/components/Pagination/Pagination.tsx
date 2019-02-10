@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Pagination.scss';
 
 interface PaginationProps {
@@ -25,7 +26,7 @@ class Pagination extends Component<PaginationProps, {}> {
                     className="button is-rounded"
                     onClick={loadMore}
                 >
-                    Load More
+                    <FontAwesomeIcon icon="caret-down" />
                 </button>
             </nav>
         );

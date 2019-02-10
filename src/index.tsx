@@ -10,10 +10,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHome, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import {
+    faHome,
+    faLightbulb,
+    faCaretDown,
+} from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-library.add(faHome, faLightbulb, faGithub);
+library.add(faHome, faLightbulb, faGithub, faCaretDown);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
