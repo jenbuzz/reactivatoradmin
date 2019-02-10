@@ -31,6 +31,8 @@ describe('<ItemContainer />', () => {
     let updateItem: any;
     let deleteItem: any;
 
+    let wrapper: any;
+
     beforeEach(() => {
         jest.resetModules();
 
@@ -40,10 +42,8 @@ describe('<ItemContainer />', () => {
         addItem = jest.fn();
         updateItem = jest.fn();
         deleteItem = jest.fn();
-    });
 
-    it('renders without crashing', () => {
-        mount(
+        wrapper = mount(
             <Provider store={store}>
                 <ItemContainer
                     total={5}
@@ -57,19 +57,21 @@ describe('<ItemContainer />', () => {
     });
 
     it('should call addItem on submitting add-item form', () => {
-        const wrapper = mount(
-            <Provider store={store}>
-                <ItemContainer
-                    total={5}
-                    loadMore={loadMore}
-                    addItem={addItem}
-                    updateItem={updateItem}
-                    deleteItem={deleteItem}
-                />
-            </Provider>
-        );
         wrapper.find('button#addItem').simulate('submit');
 
         expect(addItem).toBeCalled();
+    });
+
+    it('should call updateItem on change active state', () => {
+        wrapper.find('button#btnDelete').simulate('click');
+        wrapper.find('button#btnDeleteConfirm').simulate('click');
+
+        expect(deleteItem).toBeCalled();
+    });
+
+    it('should call loadMore on pagination btn click', () => {
+        wrapper.find('button#btnLoadMore').simulate('click');
+
+        expect(loadMore).toBeCalled();
     });
 });
