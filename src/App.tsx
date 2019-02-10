@@ -73,7 +73,6 @@ class App extends Component<{}, AppState> {
     };
 
     setDarkMode = () => {
-        console.log('click');
         this.setState((state: AppState) => ({
             darkMode: !state.darkMode,
         }));
