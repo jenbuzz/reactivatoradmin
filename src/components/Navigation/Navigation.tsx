@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface NavigationProps {
     setDarkMode: () => void;
@@ -24,28 +25,24 @@ class Navigation extends Component<NavigationProps, {}> {
                 <div id="navMenu" className="navbar-menu">
                     <div className="navbar-start">
                         <a className="navbar-item" href="/">
-                            <span>Home</span>
+                            <FontAwesomeIcon icon="home" />
+                            <span>&nbsp;Home</span>
                         </a>
                         <a
                             className="navbar-item"
                             href="https://github.com/jenbuzz/reactivatoradmin"
                             target="_blank"
                         >
-                            <span>GitHub</span>
+                            <FontAwesomeIcon icon={['fab', 'github']} />
+                            <span>&nbsp;GitHub</span>
                         </a>
                     </div>
                     <div className="navbar-end">
-                        <div className="navbar-item">
-                            <input
-                                id="dark-mode-switch"
-                                type="checkbox"
-                                className="switch is-success"
-                                checked={this.props.isDarkMode}
-                                onChange={this.props.setDarkMode}
-                            />
-                            <label htmlFor="dark-mode-switch">
-                                Go {this.props.isDarkMode ? 'bright' : 'dark'}!
-                            </label>
+                        <div
+                            className="navbar-item"
+                            onClick={this.props.setDarkMode}
+                        >
+                            <FontAwesomeIcon icon="lightbulb" />
                         </div>
                     </div>
                 </div>
