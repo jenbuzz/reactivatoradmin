@@ -65,7 +65,9 @@ class AddItem extends Component<AddItemProps, AddItemState> {
                         </div>
                         <div className="field is-grouped">
                             <div className="control">
-                                <button className="button is-link">Add</button>
+                                <button id="addItem" className="button is-link">
+                                    Add
+                                </button>
                             </div>
                         </div>
                     </div>

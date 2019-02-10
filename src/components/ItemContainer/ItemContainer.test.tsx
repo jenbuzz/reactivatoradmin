@@ -26,10 +26,21 @@ describe('<ItemContainer />', () => {
         },
     });
 
-    const loadMore = jest.fn();
-    const addItem = jest.fn();
-    const updateItem = jest.fn();
-    const deleteItem = jest.fn();
+    let loadMore: any;
+    let addItem: any;
+    let updateItem: any;
+    let deleteItem: any;
+
+    beforeEach(() => {
+        jest.resetModules();
+
+        process.env.REACT_APP_FIREBASE_COLLECTION = 'items';
+
+        loadMore = jest.fn();
+        addItem = jest.fn();
+        updateItem = jest.fn();
+        deleteItem = jest.fn();
+    });
 
     it('renders without crashing', () => {
         mount(
@@ -43,5 +54,22 @@ describe('<ItemContainer />', () => {
                 />
             </Provider>
         );
+    });
+
+    it('should call addItem on submitting add-item form', () => {
+        const wrapper = mount(
+            <Provider store={store}>
+                <ItemContainer
+                    total={5}
+                    loadMore={loadMore}
+                    addItem={addItem}
+                    updateItem={updateItem}
+                    deleteItem={deleteItem}
+                />
+            </Provider>
+        );
+        wrapper.find('button#addItem').simulate('submit');
+
+        expect(addItem).toBeCalled();
     });
 });
